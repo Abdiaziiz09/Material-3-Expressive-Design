@@ -17,40 +17,6 @@ An independent, source-traceable guide for implementing Flutter interfaces infor
 - Flutter mobile targets: Android and iOS phones, tablets, and foldables, with platform limitations called out.
 - Responsive/adaptive layouts, accessibility, localization, testing, and AI-agent workflows.
 
-## Mobile device visual references
-
-The following supplementary images were supplied by the project maintainer, who confirmed permission to include them. Their original source and design-spec status have not been independently verified. Treat them as visual inspiration only—not official requirements, Flutter screenshots, or proof of M3 Expressive conformance.
-
-#### Phone app screens
-
-[![Three phone app screens showing activity, email, and photos](docs/assets/readme/01-phone-apps.png)](docs/assets/readme/01-phone-apps.png)
-
-*Phone app screens showing activity, email, and photos.*
-
-#### Foldable entertainment layout
-
-[![Foldable device displaying media and related content side by side](docs/assets/readme/02-foldable-entertainment-layout.png)](docs/assets/readme/02-foldable-entertainment-layout.png)
-
-*Foldable entertainment layout with media and related content side by side.*
-
-#### Foldable gallery and multitasking
-
-[![Foldable device showing a gallery beside other app content](docs/assets/readme/03-foldable-multitasking-gallery.png)](docs/assets/readme/03-foldable-multitasking-gallery.png)
-
-*Foldable gallery and multitasking layout.*
-
-#### Tablet split view
-
-[![iPad split view with two apps and a draggable divider](docs/assets/readme/04-ipad-split-view.png)](docs/assets/readme/04-ipad-split-view.png)
-
-*Tablet split view with two apps and a draggable divider.*
-
-#### Android tablet notifications
-
-[![Android tablet notification and quick settings interface](docs/assets/readme/05-android-tablet-notifications.png)](docs/assets/readme/05-android-tablet-notifications.png)
-
-*Android tablet notifications and quick settings.*
-
 Flutter's Material library implements Material Design components and theming. Setting `ThemeData.useMaterial3` selects Flutter's Material 3 behavior; it does **not** prove that every M3 Expressive component, motion treatment, or platform behavior is implemented. Use the [support matrix](docs/reference/support-matrix.md) and [component verification ledger](docs/reference/component-verification-ledger.md) to determine what is API verified, configurable, custom, platform-dependent, or unverified.
 
 ## Foundation examples
@@ -114,116 +80,6 @@ The examples below are served from Google's Material Design hosting and link to 
 [![Four Material chip variants](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Flzthj7vk-1.png?alt=media)](https://m3.material.io/components/chips/overview)
 
 *Official Material image. Read the [chips guidance](https://m3.material.io/components/chips/overview).*
-
-### Additional mobile component and interaction references
-
-The following ten maintainer-supplied images are preserved in this repository and summarized by the visible patterns they depict. Their original source and specification status have not been independently verified. Use them as visual inspiration only; confirm component anatomy, states, sizing, and behavior against the linked official guidance and the Flutter verification ledger before implementation.
-
-#### Expressive quick settings
-
-[![Mobile expressive controls and quick settings shown at multiple sizes](docs/assets/readme/13-expressive-quick-settings.png)](docs/assets/readme/13-expressive-quick-settings.png)
-
-*Expressive quick settings, toolbar actions, and chips shown at different sizes.*
-
-#### Expressive mobile app collage
-
-[![Expressive music, finance, and messaging app screens](docs/assets/readme/14-expressive-mobile-apps-collage.png)](docs/assets/readme/14-expressive-mobile-apps-collage.png)
-
-*Music, finance, and messaging interfaces showing varied color and composition.*
-
-#### Rich-text formatting toolbar
-
-[![Rich-text formatting toolbar with emphasis and color controls](docs/assets/readme/15-rich-text-formatting-toolbar.png)](docs/assets/readme/15-rich-text-formatting-toolbar.png)
-
-*Text formatting toolbar with bold, italic, underline, text-color, and highlight controls.*
-
-#### Share split button
-
-[![Share split button with a separate dropdown action](docs/assets/readme/16-share-split-button.png)](docs/assets/readme/16-share-split-button.png)
-
-*Split share button with a primary action and a separate dropdown.*
-
-#### Slider and progress indicators
-
-[![Expressive linear slider and circular progress indicator](docs/assets/readme/17-slider-and-progress-indicators.png)](docs/assets/readme/17-slider-and-progress-indicators.png)
-
-*Linear slider and circular progress indicator with expressive track treatments.*
-
-#### Segmented time selector
-
-[![Day, week, and month segmented selector with Day selected](docs/assets/readme/18-segmented-time-selector.png)](docs/assets/readme/18-segmented-time-selector.png)
-
-*Segmented time selector for day, week, and month.*
-
-#### Expressive actions and controls
-
-[![Collection of expressive buttons, selection controls, sliders, and navigation actions](docs/assets/readme/19-expressive-actions-and-controls.png)](docs/assets/readme/19-expressive-actions-and-controls.png)
-
-*Collection of expressive buttons, selection controls, sliders, and navigation actions.*
-
-#### Foldable bottom action bars
-
-[![Two mobile app action bars shown on overlapping device panes](docs/assets/readme/20-foldable-bottom-action-bars.png)](docs/assets/readme/20-foldable-bottom-action-bars.png)
-
-*Bottom action bars shown across overlapping device panes.*
-
-#### Mobile floating action button
-
-[![Mobile content view with a floating edit action and bottom actions](docs/assets/readme/21-mobile-floating-action-button.png)](docs/assets/readme/21-mobile-floating-action-button.png)
-
-*Floating edit action paired with a bottom row of content actions.*
-
-#### Mobile bottom action bar
-
-[![Mobile bottom action bar with archive, bookmark, delete, and edit actions](docs/assets/readme/22-mobile-bottom-action-bar.png)](docs/assets/readme/22-mobile-bottom-action-bar.png)
-
-*Mobile bottom action bar with archive, bookmark, delete, and edit actions.*
-
-### Supplementary mobile app and interaction imagery
-
-These maintainer-supplied images are additional visual references, not verified component specifications. Compare them with the relevant official Material pages before making implementation decisions.
-
-#### Expressive mobile apps
-
-[![Collage of expressive mobile application screens](docs/assets/readme/06-expressive-mobile-apps.png)](docs/assets/readme/06-expressive-mobile-apps.png)
-
-*Expressive mobile app screens with varied layouts and color.*
-
-#### Mobile music player
-
-[![Music player screen on a phone](docs/assets/readme/07-mobile-music-player.png)](docs/assets/readme/07-mobile-music-player.png)
-
-*Mobile music player screen.*
-
-#### Expressive app gallery
-
-[![Gallery of colorful expressive mobile app interfaces](docs/assets/readme/08-expressive-app-gallery.png)](docs/assets/readme/08-expressive-app-gallery.png)
-
-*Gallery of colorful expressive mobile app interfaces.*
-
-#### Mobile interface compositions
-
-[![Multiple mobile interface compositions with varied color and layout](docs/assets/readme/09-mobile-interface-compositions.png)](docs/assets/readme/09-mobile-interface-compositions.png)
-
-*Mobile screen compositions with varied color and layout.*
-
-#### Mobile messaging
-
-[![Mobile messaging inbox with conversation list](docs/assets/readme/10-mobile-messaging.png)](docs/assets/readme/10-mobile-messaging.png)
-
-*Mobile messaging inbox and conversation list.*
-
-#### Mobile chat and calls
-
-[![Mobile chat, call, and keyboard screens](docs/assets/readme/11-mobile-chat-and-calls.png)](docs/assets/readme/11-mobile-chat-and-calls.png)
-
-*Mobile chat, calling, and keyboard screens.*
-
-#### Expressive music controls
-
-[![Expressive music playback controls on a mobile screen](docs/assets/readme/12-expressive-music-controls.png)](docs/assets/readme/12-expressive-music-controls.png)
-
-*Expressive mobile music playback controls.*
 
 [![Material example of expressive control shapes and component treatments](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0c73wle-8.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
 
@@ -310,6 +166,6 @@ Flutter widget-test goldens are regression fixtures for the test renderer, not A
 
 Material's interactive pages may not expose every specification detail through text retrieval. The [source catalog](docs/reference/official-sources.md) and [component verification ledger](docs/reference/component-verification-ledger.md) state what was actually checked. Visuals and behavior still require review on intended Android and iOS devices, including relevant phone/tablet form factors, text scales, locales, touch input, and assistive technologies.
 
-Official Material illustrations in this README are embedded from Google-hosted pages and link to their source pages; those files are not copied into this repository, and rights remain with their respective owners. Maintainer-supplied supplementary images are stored unchanged under [`docs/assets/readme/`](docs/assets/readme/) with permission from the project maintainer; their original sources and specification status have not been independently verified. Do not treat either group of images as Flutter screenshots or proof of conformance. See [Google Terms of Service](https://policies.google.com/terms) and the relevant Material source pages for current terms.
+Official Material illustrations in this README are embedded from Google-hosted pages and link to their source pages; those files are not copied into this repository, and rights remain with their respective owners. The repository also retains maintainer-supplied supplementary images under [`docs/assets/readme/`](docs/assets/readme/), with permission from the project maintainer; their original sources and specification status have not been independently verified. Do not treat either group of images as Flutter screenshots or proof of conformance. See [Google Terms of Service](https://policies.google.com/terms) and the relevant Material source pages for current terms.
 
 The original source list is preserved in [link_sources.md](link_sources.md) and the source catalog in [docs/reference/official-sources.md](docs/reference/official-sources.md). To report an inaccuracy or propose a source-backed change, follow [contribution guidance](CONTRIBUTING.md). The repository intentionally makes no claim of universal or 100% compliance.
