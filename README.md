@@ -33,22 +33,6 @@ Use typography as a hierarchy system, not a collection of arbitrary sizes. In Fl
 
 [![Material shape library example](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoi7e8z9-blog3.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
 
-*Official Material illustration; the article says its shape library includes 35 iconic shapes. See the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
-
-[![Material shape families shown in a labeled grid](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0c3rf47-3.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
-
-*Official Material shape illustration. Use it to recognize visual families, not to infer Flutter APIs or exact token values; see the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
-
-[![Expressive image composition using varied geometric shapes](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0c35amt-1.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
-
-*Official Material expressive imagery example. See the [source article](https://m3.material.io/blog/building-with-m3-expressive) for context.*
-
-[![Material illustration pairing a wordmark with expressive geometric forms](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm7pa01q8-4.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
-
-*Official Material illustration. See the [source article](https://m3.material.io/blog/building-with-m3-expressive); do not treat the artwork as a reusable brand asset.*
-
-For color roles, elevation, spacing, icons, motion, accessibility, and responsive design, use the [foundations guide](docs/foundations/index.md). Exact values are included only where the cited source supports them; unspecified values are not guessed.
-
 ## Component visual references
 
 [![Expressive app bars, toolbars, and buttons](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoia5ltu-blog12.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)

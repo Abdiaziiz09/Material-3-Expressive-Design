@@ -28,8 +28,8 @@ Read this before composing any UI. It maps every common M3E design intent to its
 | Ghost / text-only action | `TextButton` | — | E2 | Lowest emphasis. Use in dialogs, alongside higher-emphasis buttons. |
 | Outlined / medium action | `OutlinedButton` | — | E2 | Medium emphasis. Border: `colorScheme.outline`. |
 | Icon-only action | `IconButton` (+ `.filled`, `.filledTonal`, `.outlined`) | — | E2 | Always set `tooltip` / `Semantics(label:)`. Follow platform tap-target guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS); see [accessibility guidance](../foundations/accessibility.md). |
-| Group of exclusive choices | `SegmentedButton<T>` | — | E2 | Mutually exclusive selection within a bounded group. **Not** a group of independent actions. |
-| Group of independent actions | Compose with `Row` + buttons | `M3EConnectedButtonGroup` | E3 | Connected button group. Shared outer border, inner dividers. Use `M3EButtonDensity`. |
+| Group of exclusive choices | `SegmentedButton<T>` | `M3EConnectedButtonGroup<T>` | E2; repo API is local | Select a built-in or repo implementation based on the verified requirement. The repo widget uses `items`, `selected: Set<T>`, `onSelectionChanged`, and `multiSelect`; inspect its source and semantics. |
+| Group of independent actions | Compose with `Row` / `Wrap` + buttons | — | E2 | Keep independent actions as actions; do not give them selected-choice semantics. |
 | Primary action + overflow menu | Compose `FilledButton` + `MenuAnchor` | `M3ESplitButton` | E1 | No stock Flutter split-button widget. Custom composition. |
 | Floating primary action | `FloatingActionButton` | — | E2 | One FAB per screen. Reserve for the most contextually important action. |
 | Floating action with label | `FloatingActionButton.extended` | — | E2 | Use when space allows; label improves discoverability. |
@@ -54,29 +54,49 @@ FilledButton.tonal(
 IconButton(
   onPressed: onEdit,
   tooltip: 'Edit',
-  style: IconButton.styleFrom(minimumSize: const Size(48, 48)),
+  style: IconButton.styleFrom(
+    minimumSize: Size.square(context.m3e.spacing.space48),
+  ),
   icon: const Icon(Icons.edit_rounded),
 )
 
 // Connected button group (repo widget)
 M3EConnectedButtonGroup<String>(
-  selectedIndex: currentIndex,
-  density: M3EButtonDensity.standard,
-  onSelected: (i) => setState(() => currentIndex = i),
   items: const [
-    M3EButtonItem(icon: Icons.list_rounded, label: 'List'),
-    M3EButtonItem(icon: Icons.grid_view_rounded, label: 'Grid'),
+    M3EButtonItem<String>(
+      value: 'list',
+      icon: Icon(Icons.list_rounded),
+      label: Text('List'),
+    ),
+    M3EButtonItem<String>(
+      value: 'grid',
+      icon: Icon(Icons.grid_view_rounded),
+      label: Text('Grid'),
+    ),
   ],
+  selected: {selectedView},
+  onSelectionChanged: (selection) {
+    if (selection.isNotEmpty) {
+      setState(() => selectedView = selection.single);
+    }
+  },
 )
 
 // Split button (repo widget)
 M3ESplitButton(
-  label: 'Export',
-  icon: Icons.upload_rounded,
-  onPrimaryPressed: onExport,
-  onTrailingPressed: onShowExportOptions,
+  label: const Text('Export'),
+  icon: const Icon(Icons.upload_rounded),
+  onPressed: onExport,
+  menuChildren: [
+    MenuItemButton(
+      onPressed: onExportAs,
+      child: const Text('Export as'),
+    ),
+  ],
 )
 ```
+
+These are API usage examples for the repository's implementation, not evidence that the components fully match an official Material specification. See the [component snippet catalog](../ai-agent-guide/component-snippets.md) and verify behavior against the target app and SDK.
 
 ---
 
@@ -100,12 +120,12 @@ The tablet transition threshold is an app-specific decision, not an official Mat
 ```dart
 // Use M3EAdaptiveScaffold for the reference app's phone/tablet navigation:
 M3EAdaptiveScaffold(
-  currentIndex: _selectedIndex,
-  onNavigationChanged: (i) => setState(() => _selectedIndex = i),
+  selectedIndex: _selectedIndex,
+  onDestinationSelected: (index) => setState(() => _selectedIndex = index),
   destinations: const [
-    NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
-    NavigationDestination(icon: Icon(Icons.explore_outlined), label: 'Explore'),
-    NavigationDestination(icon: Icon(Icons.person_outlined), label: 'Profile'),
+    M3EDestination(label: 'Home', icon: Icon(Icons.home_outlined)),
+    M3EDestination(label: 'Explore', icon: Icon(Icons.explore_outlined)),
+    M3EDestination(label: 'Profile', icon: Icon(Icons.person_outlined)),
   ],
   body: _screens[_selectedIndex],
 )
@@ -258,21 +278,23 @@ These are M3E-specific patterns. Use deliberately — one per screen section, no
 
 | Expressive intent | Approach | Notes |
 |---|---|---|
-| Hero achievement / reward | `ClipPath` with `m3e.shapes.clover4Leaf` or `sunny` | 64–96dp icon inside organic shape on `primaryContainer` |
-| Promotional / discount tag | `ClipPath` with `m3e.shapes.burst` or `boom` | `tertiaryContainer` fill; `labelLarge` price text |
-| App icon / avatar | `ClipPath` with `m3e.shapes.squircle` | Consistent with platform app icon |
+| Hero achievement / reward | `ShapeDecoration` using a verified shape border | Select a supported shape and content treatment for the target app. |
+| Promotional / discount tag | `ShapeDecoration` using a verified shape border | Confirm the shape taxonomy and role in an applicable source. |
+| App icon / avatar | Platform-appropriate image shape or `ShapeDecoration` | Do not infer platform app-icon requirements from a shape name. |
 | Featured card accent | `m3e.shapes.roundedRectangle.toBorder()` | Large radius (24–28dp) on `surfaceContainerLow` |
 | Category filter chip | `ChoiceChip` + custom shape | `m3e.shapes.borderFull` (pill) |
-| Security / trust indicator | `ClipPath` with `m3e.shapes.shield` | `secondaryContainer` fill |
+| Security / trust indicator | `ShapeDecoration` using a verified shape border | Use semantic color roles and a non-color status cue. |
 
 ```dart
-// Hero achievement badge pattern
-ClipPath(
-  clipper: M3EShapeClipper(m3e.shapes.clover4Leaf),
-  child: Container(
-    width: m3e.spacing.space64,
-    height: m3e.spacing.space64,
+// Repository shape definitions expose ShapeBorder conversion.
+// The repository does not provide an M3E CustomClipper.
+DecoratedBox(
+  decoration: ShapeDecoration(
     color: theme.colorScheme.primaryContainer,
+    shape: m3e.shapes.clover4Leaf.toBorder(),
+  ),
+  child: Padding(
+    padding: m3e.spacing.all16,
     child: Icon(
       Icons.emoji_events_rounded,
       size: m3e.spacing.space32,

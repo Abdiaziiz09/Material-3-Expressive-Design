@@ -2,6 +2,20 @@
 
 This page is the **agent-neutral entry point** for any AI coding assistant assigned to build or modify an Android or iOS Flutter mobile app using Material 3 Expressive. Phone, tablet, and foldable layouts are in scope. Web and desktop apps are out of scope. The instructions do not depend on a particular model, vendor, editor, agent mode, or prompt-file format. Follow the repository's canonical documentation and the target project's actual SDK/package versions; do not assume that a vendor-specific instruction file is available.
 
+## A staged workflow for a focused task
+
+For substantial UI work, break the request into these phases. They are a workflow, not a requirement to stop for approval unless a product decision is ambiguous or consequential.
+
+1. **Theme and scaffold:** establish the target platforms and versions; read the scope, token evidence, theme, and responsive guidance; inspect the target app before changing its scaffold.
+2. **Core components:** map each user task to the [component decision matrix](../components/component-decision-matrix.md), then inspect the [component snippet catalog](component-snippets.md) and source implementation. Reuse an existing component only when its behavior and API fit the requirement.
+3. **Review and refine:** check tokens, source claims, text scaling, accessibility, localization/RTL, responsive behavior, reduced motion, and platform-specific states with the [validation checklist](validation-checklist.md). Record what could not be tested.
+
+Suggested prompts can be adapted to a coding agent without assuming it automatically reads any particular filename:
+
+1. “Inspect the repository instructions, app versions, scope, theme and token evidence. Propose a target-specific scaffold and identify unknowns before changing UI.”
+2. “Implement the requested screen using verified built-in or repository components where appropriate. Check their source and the pinned APIs; label application-specific choices and documented gaps.”
+3. “Review the diff against the repository validation checklist, run the relevant checks, fix issues caused by this change, and report exact outcomes and remaining gaps.”
+
 ---
 
 ## Step 0: Understand what you are working with
@@ -14,7 +28,7 @@ Classify every requirement before writing a line of code:
 |---|---|---|
 | **Built-in** | A Flutter widget satisfies the requirement as-is | Use it directly; configure via theme |
 | **Configurable** | A Flutter widget satisfies the requirement through its documented properties or theme | Set via `ThemeData` / component theme |
-| **Custom (documented gap)** | No built-in satisfies the M3E requirement; repo has a reference widget | Use the repo widget from `lib/m3e/widgets/`; read its docstring |
+| **Custom (repo reference)** | A verified need is not met by the built-in; a repo implementation may be relevant | Inspect the repo widget and its tests; reuse only if its behavior fits. It is not conformance evidence. |
 | **Custom (new gap)** | No built-in or repo widget satisfies it | Build a focused custom widget; label it "Custom Implementation Choice" |
 | **Unverified** | Source or API evidence is insufficient | Do not assert support; flag it explicitly |
 
@@ -40,7 +54,7 @@ Apps that use this repository's custom widgets or tokens need the corresponding 
 // Reference-app dependency: examples/flutter/reference_app/pubspec.yaml
 // Check the target application's own dependency constraints and lockfile.
 import 'package:material_ui/material_ui.dart';
-import 'lib/m3e/m3e.dart'; // project token extension
+import 'package:m3_expressive_reference_app/m3e/m3e.dart';
 
 MaterialApp(
   theme: ThemeData(
@@ -181,19 +195,18 @@ Row(children: [
 
 ## Step 4: Choose the right component
 
-See the [full component decision matrix](../components/component-decision-matrix.md) for detailed guidance. Quick reference:
+See the [full component decision matrix](../components/component-decision-matrix.md) for detailed guidance and the [component snippet catalog](component-snippets.md) for source-linked usage examples. The table is a starting point, not a mandate to use a custom component:
 
 | Design intent | Flutter widget | M3E repo widget | Notes |
 |---|---|---|---|
 | Primary action | `FilledButton` | — | Use `colorScheme.primary` fill |
 | Secondary action | `FilledButton.tonal` | — | Lower emphasis than primary |
 | Tertiary / ghost | `TextButton`, `OutlinedButton` | — | Lowest emphasis |
-| Group of related actions | `SegmentedButton` (exclusive) | `M3EConnectedButtonGroup` | Not interchangeable |
+| Group of exclusive choices | `SegmentedButton` | `M3EConnectedButtonGroup` | The repo widget is a separate implementation; inspect its selection and semantics API. |
+| Independent actions | Row/Wrap of buttons | — | Do not model independent actions as selected choices. |
 | Primary + overflow menu | Compose `FilledButton` + `MenuAnchor` | `M3ESplitButton` | No stock split-button widget |
 | App bar | `AppBar`, `SliverAppBar` | `M3EAppBar` | M3EAppBar adds responsive bounds |
-| Bottom navigation (compact) | `NavigationBar` | `M3EAdaptiveScaffold` | Auto-switches to rail/drawer |
-| Side navigation (medium+) | `NavigationRail` | `M3EAdaptiveScaffold` | |
-| Full navigation (expanded) | `NavigationDrawer` | `M3EAdaptiveScaffold` | |
+| Bottom/side/drawer navigation | `NavigationBar`, `NavigationRail`, `NavigationDrawer` | `M3EAdaptiveScaffold` | Use only for real top-level destinations; validate the repo scaffold's project-specific thresholds. |
 | Grouped list items | `ListView` + `ListTile` | `M3ESegmentedList` | Use segmented for expressive grouping |
 | Floating primary action | `FloatingActionButton` | — | FAB menu requires custom composition |
 | Confirmation badge | `Badge` | — | Flutter API verified |
@@ -206,20 +219,10 @@ See the [full component decision matrix](../components/component-decision-matrix
 Use iconic shapes deliberately. They communicate personality and emphasis — not decoration.
 
 ```dart
-// Clip a widget to an expressive shape
-ClipPath(
-  clipper: M3EShapeClipper(context.m3e.shapes.clover4Leaf),
-  child: Container(
-    width: m3e.spacing.space64,
-    height: m3e.spacing.space64,
-    color: theme.colorScheme.primaryContainer,
-    child: Icon(Icons.star_rounded, color: theme.colorScheme.onPrimaryContainer),
-  ),
-)
-
-// Use a shape as a Material border
+// Use a repository shape definition as a Flutter ShapeBorder.
+// The shape's source/evidence and suitability must still be verified.
 Material(
-  shape: context.m3e.shapes.squircle.toBorder(),
+  shape: m3e.shapes.squircle.toBorder(),
   color: theme.colorScheme.surfaceContainerLow,
   child: Padding(
     padding: m3e.spacing.all16,
@@ -244,64 +247,43 @@ Use organic/burst shapes sparingly — reserve for one focal point per screen, n
 
 ## Step 6: Apply motion
 
-Use spring physics for interactive motion. Use duration constants for simple state transitions.
+Choose motion only when supported by the applicable design source and product behavior. `M3EMotion` values are repository-defined implementation choices, not universal Material requirements. Respect the platform reduced-motion setting.
 
 ```dart
-// Spatial spring: positional movement, size changes, morphing shapes
-// → Use when something moves across the screen or grows/shrinks in response to user input
-AnimationController controller = AnimationController(vsync: this);
-final sim = context.m3e.motion.createSpatialSpring(start: 0.0, end: 1.0);
-controller.animateWith(sim);
+final motion = context.m3e.motion;
+final duration = MediaQuery.of(context).disableAnimations
+    ? Duration.zero
+    : motion.durationFast;
 
-// Effect spring: color, opacity, elevation changes
-// → Use when a surface fades in, changes color, or changes elevation
-final effectSim = context.m3e.motion.createEffectSpring(start: 0.0, end: 1.0);
-
-// Simple state transitions without spring physics
 AnimatedContainer(
-  duration: context.m3e.motion.durationFast,   // 150ms
-  curve: context.m3e.motion.curveEffectFade,   // easeOutCubic
+  duration: duration,
+  curve: motion.curveEffectFade,
   color: isSelected
-    ? theme.colorScheme.secondaryContainer
-    : theme.colorScheme.surfaceContainerLow,
+      ? theme.colorScheme.secondaryContainer
+      : theme.colorScheme.surfaceContainerLow,
 )
-```
-
-**Always provide a reduced-motion fallback:**
-
-```dart
-final reduceMotion = MediaQuery.of(context).disableAnimations;
-final duration = reduceMotion
-  ? Duration.zero
-  : context.m3e.motion.durationMedium;
 ```
 
 ---
 
 ## Step 7: Build responsive layout
 
-Use `LayoutBuilder` to detect viewport width. Never use `Platform` checks as a proxy for screen size.
+Use `LayoutBuilder` to respond to available constraints. Never use `Platform` checks as a proxy for screen size. Do not copy unverified numeric breakpoints into app code; choose and document app-specific thresholds, or inspect the repository scaffold's source and test its behavior on the target layouts.
 
 ```dart
-// Repo breakpoints (Implementation recommendation — not official M3 token)
-// compact:  width < 720dp   → NavigationBar  + single-column
-// medium:   720–1024dp      → NavigationRail + two-column
-// expanded: width > 1024dp  → NavigationDrawer + multi-pane
-
-LayoutBuilder(
-  builder: (context, constraints) {
-    if (constraints.maxWidth < 720) {
-      return _CompactLayout(child: body);
-    } else if (constraints.maxWidth < 1024) {
-      return _MediumLayout(child: body);
-    } else {
-      return _ExpandedLayout(child: body);
-    }
-  },
+// See the source-linked M3EAdaptiveScaffold example and inspect its
+// project-specific layout thresholds before adapting it.
+M3EAdaptiveScaffold(
+  selectedIndex: selectedIndex,
+  onDestinationSelected: onDestinationSelected,
+  destinations: const [
+    M3EDestination(label: 'Home', icon: Icon(Icons.home_outlined)),
+    M3EDestination(label: 'Library', icon: Icon(Icons.video_library_outlined)),
+  ],
+  appBar: const M3EAppBar(title: Text('Media')),
+  body: body,
 )
 ```
-
-Or use the repo's `M3EAdaptiveScaffold` which handles this automatically.
 
 ---
 

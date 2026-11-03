@@ -1,170 +1,28 @@
 # Custom components
 
-Extend Flutter only when the component requirements cannot be met by verified built-in widgets and themes. This document details the custom Material 3 Expressive (M3E) reference components implemented in `examples/flutter/reference_app/lib/m3e/widgets/`.
+Extend Flutter only when the verified requirement cannot be met by an appropriate built-in widget, theme, or existing repository component. The components in this guide are implementation examples maintained in `examples/flutter/reference_app/lib/m3e/`; they are not an official Google specification, a separately published package, or a guarantee of M3 Expressive conformance.
 
----
+## Current reference implementations
 
-## 1. Component Strategy
+Use the [component snippet catalog](../ai-agent-guide/component-snippets.md) for source-linked usage examples. The implementation files are the source of truth for constructor signatures and behavior:
 
-1. **Identify the Visual and Interaction Gap**: Verify that the required M3E component behavior is not provided by the baseline Flutter SDK.
-2. **Compose Standard Primitives**: Prefer combining existing Flutter widgets (`Material`, `InkWell`, `Semantics`, `LayoutBuilder`, and spring animation primitives) rather than forking or copying framework internals.
-3. **Bind to Semantic Tokens**: Every component must source its visual parameters from `ColorScheme`, `context.m3e.spacing`, and `context.m3e.shapes`. Zero magic numbers are permitted.
-4. **Preserve Accessibility**: Follow the relevant platform touch-target guidance (Flutter's guide cites 48x48 dp for Android and 44x44 pt for iOS), preserve text at large platform scale settings, and support bidirectional layout (RTL). Verify any separate accessibility-conformance requirements that apply to the mobile app; see [accessibility guidance](../foundations/accessibility.md).
-5. **Spring Physics**: Use `M3EMotion.createSpatialSpring()` and `M3EMotion.createEffectSpring()` for state transitions instead of linear or ease-in-out curves.
+| Component | Source | Current implementation notes |
+|---|---|---|
+| `M3ESegmentedList` | [`m3e_segmented_list.dart`](https://github.com/Abdiaziiz09/Material-3-Expressive-Design/blob/main/examples/flutter/reference_app/lib/m3e/widgets/m3e_segmented_list.dart) | Takes `List<M3ESegmentedListItem>`. Non-reorderable items are composed in a `Column`; do not assume lazy rendering for a large collection. |
+| `M3EAppBar` | [`m3e_app_bar.dart`](https://github.com/Abdiaziiz09/Material-3-Expressive-Design/blob/main/examples/flutter/reference_app/lib/m3e/widgets/m3e_app_bar.dart) | Title/subtitle are widgets. Responsive width behavior is project code, not an official component dimension. |
+| `M3EConnectedButtonGroup` | [`m3e_button_group.dart`](https://github.com/Abdiaziiz09/Material-3-Expressive-Design/blob/main/examples/flutter/reference_app/lib/m3e/widgets/m3e_button_group.dart) | Selectable options using `items`, `selected`, and `onSelectionChanged`; it is not an independent-action toolbar. |
+| `M3ESplitButton` | [`m3e_split_button.dart`](https://github.com/Abdiaziiz09/Material-3-Expressive-Design/blob/main/examples/flutter/reference_app/lib/m3e/widgets/m3e_split_button.dart) | Composes a primary action and menu trigger; verify target-platform focus, semantics, and hit targets. |
+| `M3EAdaptiveScaffold` | [`m3e_adaptive_scaffold.dart`](https://github.com/Abdiaziiz09/Material-3-Expressive-Design/blob/main/examples/flutter/reference_app/lib/m3e/widgets/m3e_adaptive_scaffold.dart) | Uses project-specific width thresholds and composes standard Flutter navigation widgets. Use only when the app needs top-level destinations. |
 
----
+No dedicated M3E card, navigation bar, or media-player component is asserted here. For a relevant component gap:
 
-## 2. Implemented Reference Widgets
+1. Verify the need and available Flutter API against the target SDK and source evidence.
+2. Prefer a built-in Material widget if its verified behavior meets the requirement.
+3. Otherwise build the narrowest app-specific composition, using project tokens where applicable and labeling unverified or custom decisions.
+4. Validate accessibility, responsive behavior, reduced motion, and platform-specific states.
 
-### 2.1 M3ESegmentedList
+## Shapes and tokens
 
-Replaces disconnected card collections with a unified, segmented container that groups related items within a continuous perimeter border and subtle dividers, supporting spring morphing physics during selection and state changes.
+The repository defines shape and spacing values in its own theme extension. Check the [design-token registry](../foundations/design-token-registry.md) for evidence labels; these project values are not automatically official Material tokens. `M3EShapeDefinition.toBorder()` provides a Flutter `ShapeBorder`. The reference app does not provide a general-purpose `CustomClipper` for these shapes, so a `ClipPath` example requires a separately implemented and tested clipper.
 
-```dart
-import 'package:material_ui/material_ui.dart';
-import 'package:reference_app/m3e/m3e.dart';
-
-M3ESegmentedList<String>(
-  items: const ['Item 1', 'Item 2', 'Item 3'],
-  itemBuilder: (context, item, index, isFirst, isLast) {
-    return ListTile(
-      title: Text(item),
-      trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
-      onTap: () {},
-    );
-  },
-)
-```
-
-- **Key Characteristics**:
-  - Rounds top corners with `borderLarge` (16dp) for the first item.
-  - Rounds bottom corners with `borderLarge` for the last item.
-  - Inserts subtle `surfaceContainerHighest` dividers between adjacent entries.
-  - Enforces intrinsic height measurement to avoid clipping during text scaling.
-
----
-
-### 2.2 M3EAppBar
-
-An expressive top app bar featuring shortened responsive bounds, prominent headline typography, and clear action separation with accessible touch targets.
-
-```dart
-import 'package:material_ui/material_ui.dart';
-import 'package:reference_app/m3e/m3e.dart';
-
-M3EAppBar(
-  title: 'Dashboard Overview',
-  subtitle: 'Material 3 Expressive Reference',
-  actions: [
-    IconButton(
-      onPressed: () {},
-      icon: const Icon(Icons.notifications_outlined),
-    ),
-  ],
-)
-```
-
-- **Key Characteristics**:
-  - Implements `PreferredSizeWidget` with responsive height scaling.
-  - Supports subtitles and badges.
-  - Action buttons preserve the applicable platform-recommended touch target.
-
----
-
-### 2.3 M3EConnectedButtonGroup
-
-A segmented group of action buttons that share a continuous outer perimeter and inner dividers. It provides three discrete density levels:
-- `compact`: Dense toolbars and compact viewports (height: 36dp).
-- `standard`: Standard touch density (height: 44dp).
-- `comfortable`: Expanded layout for tablets (height: 52dp).
-
-```dart
-import 'package:material_ui/material_ui.dart';
-import 'package:reference_app/m3e/m3e.dart';
-
-M3EConnectedButtonGroup<int>(
-  selectedIndex: 0,
-  density: M3EButtonDensity.standard,
-  onSelected: (index) {
-    // Handle selection change
-  },
-  items: const [
-    M3EButtonItem(icon: Icons.view_day_rounded, label: 'Day'),
-    M3EButtonItem(icon: Icons.view_week_rounded, label: 'Week'),
-    M3EButtonItem(icon: Icons.calendar_month_rounded, label: 'Month'),
-  ],
-)
-```
-
----
-
-### 2.4 M3ESplitButton
-
-An expressive dual-action button combining a primary action button and an adjacent dropdown menu trigger, separated by a thin vertical divider within a cohesive outer shape.
-
-```dart
-import 'package:material_ui/material_ui.dart';
-import 'package:reference_app/m3e/m3e.dart';
-
-M3ESplitButton(
-  label: 'Save Project',
-  icon: Icons.save_rounded,
-  onPrimaryPressed: () {
-    // Primary save action
-  },
-  onTrailingPressed: () {
-    // Open secondary export / save-as options menu
-  },
-)
-```
-
----
-
-### 2.5 M3EAdaptiveScaffold
-
-A responsive layout container using `LayoutBuilder` that automatically transitions between navigation patterns across screen breakpoints:
-- **Mobile (< 720dp)**: Bottom `NavigationBar`.
-- **Tablet (720dp - 1024dp)**: Lateral `NavigationRail`.
-- **Expanded mobile/tablet width (> 1024dp)**: `NavigationDrawer`. The breakpoint is a project-defined layout choice, not a universal Material requirement.
-
-```dart
-import 'package:material_ui/material_ui.dart';
-import 'package:reference_app/m3e/m3e.dart';
-
-M3EAdaptiveScaffold(
-  currentIndex: 0,
-  onNavigationChanged: (index) {},
-  destinations: const [
-    NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
-    NavigationDestination(icon: Icon(Icons.dashboard_outlined), label: 'Components'),
-    NavigationDestination(icon: Icon(Icons.settings_outlined), label: 'Settings'),
-  ],
-  body: const Center(child: Text('Screen Content')),
-)
-```
-
----
-
-## 3. The 35 Canonical M3E Shapes
-
-All 35 canonical expressive shapes are available directly through `context.m3e.shapes`:
-
-| Shape Category | Token Name | Typical Application |
-| :--- | :--- | :--- |
-| **Organic** | `clover4Leaf`, `clover8Leaf`, `flower`, `sunny` | Badges, achievements, avatars, hero callouts |
-| **Geometric** | `squircle`, `hexagon`, `octagon`, `diamond` | Feature cards, category filters, stat containers |
-| **Dynamic** | `burst`, `softBurst`, `boom`, `softBoom` | Promotional tags, urgency indicators, discounts |
-| **Functional** | `pill`, `cutCornerRectangle`, `shield` | Primary buttons, security statuses, search bars |
-
-```dart
-// Example using ClipPath with M3E Shape:
-ClipPath(
-  clipper: M3EShapeClipper(context.m3e.shapes.burst),
-  child: Container(
-    width: 64,
-    height: 64,
-    color: Theme.of(context).colorScheme.primaryContainer,
-    child: const Icon(Icons.local_offer_rounded),
-  ),
-)
-```
+See the [shape guide](../foundations/shape.md), [token registry](../foundations/design-token-registry.md), and [accessibility guidance](../foundations/accessibility.md) before adapting visual values or interaction behavior.

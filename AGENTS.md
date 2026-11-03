@@ -2,6 +2,12 @@
 
 Use this repository as an independent implementation reference, not as an official specification or a guarantee of conformance.
 
+## Agent-neutral usage
+
+This file is the repository's canonical agent guidance, but agent products differ in which instruction files they discover automatically. Do not claim that Cursor, Continue, VS Code, or another agent will automatically load `AGENTS.md`. When an agent does not discover it, point the agent to this file or configure that agent's own instruction mechanism to reference it; keep the substantive shared guidance here rather than requiring a vendor-specific rules file.
+
+Use the [component snippet catalog](docs/ai-agent-guide/component-snippets.md) as a map to the reference app's current implementations. Those widgets and examples are repository-authored implementation references, not official Google specifications or guaranteed M3E-conformant components. Inspect their source and verify their APIs against the target Flutter/package versions before reuse.
+
 ## Before changing UI
 
 1. Read [scope and terminology](docs/getting-started/scope.md), [support matrix](docs/reference/support-matrix.md), and the applicable sections of this guide.
@@ -14,6 +20,8 @@ Use this repository as an independent implementation reference, not as an offici
 
 - Do not equate `useMaterial3: true` with full M3 Expressive implementation.
 - Reuse Flutter Material widgets when verified behavior meets the requirement. Build custom widgets only for a documented gap.
+- Do not ban Flutter's built-in Material widgets as a blanket rule. Select a built-in or repository component based on the verified requirement and evidence; the presence of a similarly named M3E component does not make it appropriate for every screen.
+- Do not invent a repository M3E component where none exists. In particular, do not force navigation, card, or other component patterns into an app that does not need them; use a documented application-specific composition when there is a verified gap.
 - Prefer semantic `ColorScheme` roles and theme configuration over scattered hard-coded colors.
 - Do not invent design tokens, dimensions, timing, state behavior, or support claims. Label application-specific decisions.
 - Respect text scaling, semantic labels, keyboard/focus behavior, contrast, pointer and touch input, responsive layouts, and RTL.
@@ -30,7 +38,7 @@ Use this repository as an independent implementation reference, not as an offici
 1. **Spacing & Insets**:
    - Always use `context.m3e.spacing.*` tokens or predefined insets:
      - Spacing scale: `space4`, `space8`, `space12`, `space16`, `space24`, `space32`, `space48`, etc.
-     - Inset shortcuts: `insetsAll16`, `insetsHorizontal16`, `insetsCardPadding`, `insetsScreenEdge`.
+     - EdgeInsets helpers currently available: `all4`, `all8`, `all12`, `all16`, `all20`, `all24`, `all32`, `horizontal16`, `horizontal24`, `vertical8`, `vertical12`, `vertical16`, and named symmetric combinations.
 2. **Shapes & Radii**:
    - Always use `context.m3e.shapes.*` tokens or named expressive shapes:
      - Standard radii: `shapes.radiusNone`, `shapes.radiusSmall` (8dp), `shapes.radiusMedium` (12dp), `shapes.radiusLarge` (16dp), `shapes.radiusExtraLarge` (28dp), `shapes.radiusFull` (9999dp).
@@ -39,7 +47,7 @@ Use this repository as an independent implementation reference, not as an offici
    - Always use `context.m3e.motion.*` spring simulations and standard durations:
      - Spatial transitions: `motion.createSpatialSpring()` (overshoot-enabled spring simulation).
      - Effect transitions: `motion.createEffectSpring()` (critically damped spring simulation).
-     - Durations: `motion.durationShort`, `durationMedium`, `durationLong`.
+     - Durations currently available: `motion.durationFast`, `durationMedium`, and `durationSlow`.
 
 ---
 
@@ -101,7 +109,7 @@ Widget buildHeaderCompliant(BuildContext context) {
   return LayoutBuilder(
     builder: (context, constraints) {
       return Container(
-        padding: m3e.spacing.insetsCardPadding,
+        padding: m3e.spacing.all16,
         decoration: BoxDecoration(
           color: theme.colorScheme.surfaceContainerLow,
           borderRadius: m3e.shapes.borderLarge,

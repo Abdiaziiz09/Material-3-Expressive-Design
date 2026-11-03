@@ -26,7 +26,7 @@ See [design token registry](design-token-registry.md) for the full reference inc
 
 ## The 35 iconic M3E shapes
 
-Material 3 Expressive introduces 35 iconic shapes beyond the standard corner radius scale, organized into four categories. These are implemented by this repository as custom `M3EShapeDefinition` objects, usable with `ClipPath` and `Material(shape:)`.
+The repository includes 35 custom `M3EShapeDefinition` objects inspired by the publicly described Material 3 Expressive shape taxonomy. Their `toBorder()` method can be used where Flutter accepts a `ShapeBorder`. The repository does not provide a general-purpose `CustomClipper` for using these definitions with `ClipPath`.
 
 **Evidence:** Custom — based on the publicly described M3E shape taxonomy. No Flutter SDK API exposes these natively. Verify each shape's intended role against the [Material blog](https://m3.material.io/blog/building-with-m3-expressive) before applying to production.
 
@@ -47,7 +47,7 @@ See [component decision matrix](../components/component-decision-matrix.md) for 
 - **Readable content area first.** Do not use a shape that clips content meaningfully unless the clip is intentional (e.g. a circle avatar crop).
 - **Nested surfaces.** Calculate inner geometry from the available padding and clipping requirements. Do not repeat the parent radius without adjusting for inset.
 - **Hit testing.** When clipping with `ClipPath`, the interactive hit region matches the rectangular bounding box by default. If a non-rectangular touch boundary is needed, override `HitTestBehavior` or use a `CustomClipper` that also handles hit testing.
-- **Reduced motion.** Shape morphing is a spatial transition. Provide a reduced-motion fallback that shows the end state directly, using `m3e.motion.createSpatialSpring()` with `Duration.zero`.
+- **Reduced motion.** If an app implements shape morphing, follow the platform reduced-motion setting and provide a static end-state fallback. The repository shape definitions are static and do not implement a morphing widget.
 
 ---
 
@@ -73,18 +73,7 @@ Card(
   ),
 )
 
-// ── Iconic shape via ClipPath ─────────────────────────────────────────────────
-ClipPath(
-  clipper: M3EShapeClipper(context.m3e.shapes.clover4Leaf),
-  child: Container(
-    width: context.m3e.spacing.space64,
-    height: context.m3e.spacing.space64,
-    color: theme.colorScheme.primaryContainer,
-    child: Icon(Icons.star_rounded, color: theme.colorScheme.onPrimaryContainer),
-  ),
-)
-
-// ── Iconic shape as ShapeBorder ───────────────────────────────────────────────
+// ── Repository shape as ShapeBorder ──────────────────────────────────────────
 Material(
   shape: context.m3e.shapes.squircle.toBorder(),
   clipBehavior: Clip.antiAlias,

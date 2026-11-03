@@ -72,6 +72,7 @@ nav:
   - AI agent guide:
       - Overview: ai-agent-guide/index.md
       - M3E quick-start: ai-agent-guide/m3e-quick-start.md
+      - Component snippets: ai-agent-guide/component-snippets.md
       - Workflow: ai-agent-guide/implementation-workflow.md
       - Decision rules: ai-agent-guide/design-decision-rules.md
       - Platform selection: ai-agent-guide/platform-selection.md

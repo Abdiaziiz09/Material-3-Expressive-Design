@@ -98,17 +98,11 @@ Card(
 ### 2b. 35 iconic M3E shapes
 
 Source: Google Material 3 Expressive design kit
-Evidence: **Custom** — these shapes are implemented by this repository based on the publicly described shape taxonomy. No Flutter SDK API exposes them natively. Each is a `M3EShapeDefinition` usable with `ClipPath` or as a `ShapeBorder`.
+Evidence: **Custom** — these shapes are implemented by this repository based on the publicly described shape taxonomy. No Flutter SDK API exposes them natively. Each is a `M3EShapeDefinition` with a `toBorder()` method. The repository does not provide a corresponding `CustomClipper`.
 
 Access pattern: `context.m3e.shapes.<shapeName>` returns `M3EShapeDefinition`.
 
 ```dart
-// As ClipPath
-ClipPath(
-  clipper: M3EShapeClipper(m3e.shapes.burst),
-  child: yourWidget,
-)
-
 // As ShapeBorder
 Material(
   shape: m3e.shapes.clover4Leaf.toBorder(),

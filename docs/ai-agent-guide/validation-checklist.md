@@ -8,6 +8,9 @@ For every relevant target/theme, record pass, fail, not applicable, or not teste
 - [ ] Spacing and alignment express grouping and remain robust under localization/RTL.
 - [ ] Surface hierarchy is clear; elevation is not the only cue.
 - [ ] Component anatomy and source-backed variants match the applicable guidance.
+- [ ] Repository widgets were inspected in source and checked against the target SDK/package versions; a repo widget name or snippet alone was not treated as conformance evidence.
+- [ ] Flutter Material built-ins were considered on their verified behavior; custom components and navigation patterns were not forced where they do not fit.
+- [ ] Project token values, application-specific decisions, and official Material guidance are distinguished in the implementation and report.
 - [ ] Disabled, focused, pressed, selected, loading, and error states are tested where relevant.
 - [ ] Motion communicates change, handles interruption, and has a reduced-motion strategy.
 - [ ] Semantics, labels, focus order, supported external-keyboard access, and screen-reader behavior are checked.

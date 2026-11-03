@@ -8,13 +8,15 @@ Use the repository-root `AGENTS.md` before implementation. This guide is the ope
 
 1. [`AGENTS.md`](https://github.com/Abdiaziiz09/Flutter-M3E-Design/blob/main/AGENTS.md) — mandatory rules and error-handling scenarios
 2. [M3E quick-start](m3e-quick-start.md) — complete step-by-step workflow for AI agents
-3. [Getting started: scope](../getting-started/scope.md) — what M3E is and what it is not
-4. [Design token registry](../foundations/design-token-registry.md) — every token with value, accessor, and evidence grade
-5. [Component decision matrix](../components/component-decision-matrix.md) — which widget to use for each design intent
+3. [Component snippet catalog](component-snippets.md) — source-linked reusable examples from the Flutter reference app
+4. [Getting started: scope](../getting-started/scope.md) — what M3E is and what it is not
+5. [Design token registry](../foundations/design-token-registry.md) — every token with value, accessor, and evidence grade
+6. [Component decision matrix](../components/component-decision-matrix.md) — which widget to use for each design intent
 
 ## Reference pages
 
 - [M3E quick-start](m3e-quick-start.md) — complete agent workflow with code patterns
+- [Component snippet catalog](component-snippets.md) — current reference-app components and usage examples
 - [Implementation workflow](implementation-workflow.md) — step-by-step process checklist
 - [Design decision rules](design-decision-rules.md) — authority order and conflict resolution
 - [Mobile platform selection](platform-selection.md) — Android and iOS phones, tablets, and foldables

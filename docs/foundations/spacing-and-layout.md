@@ -136,7 +136,7 @@ Default for narrow viewports. All content in a single scrollable column.
 
 ```dart
 Scaffold(
-  appBar: M3EAppBar(title: 'Title'),
+  appBar: M3EAppBar(title: const Text('Title')),
   bottomNavigationBar: NavigationBar(/* ... */),
   body: SafeArea(
     child: ListView(
