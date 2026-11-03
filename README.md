@@ -21,13 +21,25 @@ An independent, source-traceable guide for implementing Flutter interfaces infor
 
 The following supplementary images were supplied by the project maintainer, who confirmed permission to include them. Their original source and design-spec status have not been independently verified. Treat them as visual inspiration only—not official requirements, Flutter screenshots, or proof of M3 Expressive conformance.
 
-| Phone app screens | Foldable entertainment layout |
-|---|---|
-| <a href="docs/assets/readme/01-phone-apps.png"><img src="docs/assets/readme/01-phone-apps.png" alt="Three phone app screens showing activity, email, and photos" width="320"></a> | <a href="docs/assets/readme/02-foldable-entertainment-layout.png"><img src="docs/assets/readme/02-foldable-entertainment-layout.png" alt="Foldable device displaying media and related content side by side" width="320"></a> |
-| Foldable gallery and multitasking | iPad split view |
-| <a href="docs/assets/readme/03-foldable-multitasking-gallery.png"><img src="docs/assets/readme/03-foldable-multitasking-gallery.png" alt="Foldable device showing a gallery beside other app content" width="320"></a> | <a href="docs/assets/readme/04-ipad-split-view.png"><img src="docs/assets/readme/04-ipad-split-view.png" alt="iPad split view with two apps and a draggable divider" width="320"></a> |
-| Android tablet controls | |
-| <a href="docs/assets/readme/05-android-tablet-notifications.png"><img src="docs/assets/readme/05-android-tablet-notifications.png" alt="Android tablet notification and quick settings interface" width="320"></a> | |
+[![Three phone app screens showing activity, email, and photos](docs/assets/readme/01-phone-apps.png)](docs/assets/readme/01-phone-apps.png)
+
+*Phone app screens showing activity, email, and photos.*
+
+[![Foldable device displaying media and related content side by side](docs/assets/readme/02-foldable-entertainment-layout.png)](docs/assets/readme/02-foldable-entertainment-layout.png)
+
+*Foldable entertainment layout with media and related content side by side.*
+
+[![Foldable device showing a gallery beside other app content](docs/assets/readme/03-foldable-multitasking-gallery.png)](docs/assets/readme/03-foldable-multitasking-gallery.png)
+
+*Foldable gallery and multitasking layout.*
+
+[![iPad split view with two apps and a draggable divider](docs/assets/readme/04-ipad-split-view.png)](docs/assets/readme/04-ipad-split-view.png)
+
+*Tablet split view with two apps and a draggable divider.*
+
+[![Android tablet notification and quick settings interface](docs/assets/readme/05-android-tablet-notifications.png)](docs/assets/readme/05-android-tablet-notifications.png)
+
+*Android tablet notifications and quick settings.*
 
 Flutter's Material library implements Material Design components and theming. Setting `ThemeData.useMaterial3` selects Flutter's Material 3 behavior; it does **not** prove that every M3 Expressive component, motion treatment, or platform behavior is implemented. Use the [support matrix](docs/reference/support-matrix.md) and [component verification ledger](docs/reference/component-verification-ledger.md) to determine what is API verified, configurable, custom, platform-dependent, or unverified.
 
@@ -97,32 +109,77 @@ The examples below are served from Google's Material Design hosting and link to 
 
 The following ten maintainer-supplied images are preserved in this repository and summarized by the visible patterns they depict. Their original source and specification status have not been independently verified. Use them as visual inspiration only; confirm component anatomy, states, sizing, and behavior against the linked official guidance and the Flutter verification ledger before implementation.
 
-| Image | Visible pattern (summary only) |
-|---|---|
-| <a href="docs/assets/readme/13-expressive-quick-settings.png"><img src="docs/assets/readme/13-expressive-quick-settings.png" alt="Mobile expressive controls and quick settings shown at multiple sizes" width="320"></a> | A mobile screen collection showing compact and expanded toolbar actions, chips, and quick-setting controls at different sizes. |
-| <a href="docs/assets/readme/14-expressive-mobile-apps-collage.png"><img src="docs/assets/readme/14-expressive-mobile-apps-collage.png" alt="Expressive music, finance, and messaging app screens" width="320"></a> | A collage combining music playback, a finance interface, and a messaging conversation to show varied app-level color and composition. |
-| <a href="docs/assets/readme/15-rich-text-formatting-toolbar.png"><img src="docs/assets/readme/15-rich-text-formatting-toolbar.png" alt="Rich-text formatting toolbar with emphasis and color controls" width="320"></a> | A formatting toolbar with bold, italic, underline, text-color, and highlight controls. |
-| <a href="docs/assets/readme/16-share-split-button.png"><img src="docs/assets/readme/16-share-split-button.png" alt="Share split button with a separate dropdown action" width="320"></a> | A two-part share action that separates the primary command from a dropdown affordance. |
-| <a href="docs/assets/readme/17-slider-and-progress-indicators.png"><img src="docs/assets/readme/17-slider-and-progress-indicators.png" alt="Expressive linear slider and circular progress indicator" width="320"></a> | Linear and circular progress treatments with varied track thickness and shape. |
-| <a href="docs/assets/readme/18-segmented-time-selector.png"><img src="docs/assets/readme/18-segmented-time-selector.png" alt="Day, week, and month segmented selector with Day selected" width="320"></a> | A three-option time-range selector with the Day option selected. |
-| <a href="docs/assets/readme/19-expressive-actions-and-controls.png"><img src="docs/assets/readme/19-expressive-actions-and-controls.png" alt="Collection of expressive buttons, selection controls, sliders, and navigation actions" width="320"></a> | A broad control collage covering buttons, selection states, sliders, and compact navigation actions. |
-| <a href="docs/assets/readme/20-foldable-bottom-action-bars.png"><img src="docs/assets/readme/20-foldable-bottom-action-bars.png" alt="Two mobile app action bars shown on overlapping device panes" width="320"></a> | Bottom app actions shown across overlapping device panes, useful as a composition reference for larger or foldable layouts. |
-| <a href="docs/assets/readme/21-mobile-floating-action-button.png"><img src="docs/assets/readme/21-mobile-floating-action-button.png" alt="Mobile content view with a floating edit action and bottom actions" width="320"></a> | A floating edit action paired with a bottom row of content actions. |
-| <a href="docs/assets/readme/22-mobile-bottom-action-bar.png"><img src="docs/assets/readme/22-mobile-bottom-action-bar.png" alt="Mobile bottom action bar with archive, bookmark, delete, and edit actions" width="320"></a> | A bottom action row showing archive, bookmark, delete, and edit affordances. |
+[![Mobile expressive controls and quick settings shown at multiple sizes](docs/assets/readme/13-expressive-quick-settings.png)](docs/assets/readme/13-expressive-quick-settings.png)
+
+*Expressive quick settings, toolbar actions, and chips shown at different sizes.*
+
+[![Expressive music, finance, and messaging app screens](docs/assets/readme/14-expressive-mobile-apps-collage.png)](docs/assets/readme/14-expressive-mobile-apps-collage.png)
+
+*Music, finance, and messaging interfaces showing varied color and composition.*
+
+[![Rich-text formatting toolbar with emphasis and color controls](docs/assets/readme/15-rich-text-formatting-toolbar.png)](docs/assets/readme/15-rich-text-formatting-toolbar.png)
+
+*Text formatting toolbar with bold, italic, underline, text-color, and highlight controls.*
+
+[![Share split button with a separate dropdown action](docs/assets/readme/16-share-split-button.png)](docs/assets/readme/16-share-split-button.png)
+
+*Split share button with a primary action and a separate dropdown.*
+
+[![Expressive linear slider and circular progress indicator](docs/assets/readme/17-slider-and-progress-indicators.png)](docs/assets/readme/17-slider-and-progress-indicators.png)
+
+*Linear slider and circular progress indicator with expressive track treatments.*
+
+[![Day, week, and month segmented selector with Day selected](docs/assets/readme/18-segmented-time-selector.png)](docs/assets/readme/18-segmented-time-selector.png)
+
+*Segmented time selector for day, week, and month.*
+
+[![Collection of expressive buttons, selection controls, sliders, and navigation actions](docs/assets/readme/19-expressive-actions-and-controls.png)](docs/assets/readme/19-expressive-actions-and-controls.png)
+
+*Collection of expressive buttons, selection controls, sliders, and navigation actions.*
+
+[![Two mobile app action bars shown on overlapping device panes](docs/assets/readme/20-foldable-bottom-action-bars.png)](docs/assets/readme/20-foldable-bottom-action-bars.png)
+
+*Bottom action bars shown across overlapping device panes.*
+
+[![Mobile content view with a floating edit action and bottom actions](docs/assets/readme/21-mobile-floating-action-button.png)](docs/assets/readme/21-mobile-floating-action-button.png)
+
+*Floating edit action paired with a bottom row of content actions.*
+
+[![Mobile bottom action bar with archive, bookmark, delete, and edit actions](docs/assets/readme/22-mobile-bottom-action-bar.png)](docs/assets/readme/22-mobile-bottom-action-bar.png)
+
+*Mobile bottom action bar with archive, bookmark, delete, and edit actions.*
 
 ### Supplementary mobile app and interaction imagery
 
 These maintainer-supplied images are additional visual references, not verified component specifications. Compare them with the relevant official Material pages before making implementation decisions.
 
-| Expressive mobile apps | Mobile music player |
-|---|---|
-| <a href="docs/assets/readme/06-expressive-mobile-apps.png"><img src="docs/assets/readme/06-expressive-mobile-apps.png" alt="Collage of expressive mobile application screens" width="320"></a> | <a href="docs/assets/readme/07-mobile-music-player.png"><img src="docs/assets/readme/07-mobile-music-player.png" alt="Music player screen on a phone" width="320"></a> |
-| Mobile interface gallery | Mobile screen compositions |
-| <a href="docs/assets/readme/08-expressive-app-gallery.png"><img src="docs/assets/readme/08-expressive-app-gallery.png" alt="Gallery of colorful expressive mobile app interfaces" width="320"></a> | <a href="docs/assets/readme/09-mobile-interface-compositions.png"><img src="docs/assets/readme/09-mobile-interface-compositions.png" alt="Multiple mobile interface compositions with varied color and layout" width="320"></a> |
-| Messaging interface | Chat and calls |
-| <a href="docs/assets/readme/10-mobile-messaging.png"><img src="docs/assets/readme/10-mobile-messaging.png" alt="Mobile messaging inbox with conversation list" width="320"></a> | <a href="docs/assets/readme/11-mobile-chat-and-calls.png"><img src="docs/assets/readme/11-mobile-chat-and-calls.png" alt="Mobile chat, call, and keyboard screens" width="320"></a> |
-| Music playback controls | |
-| <a href="docs/assets/readme/12-expressive-music-controls.png"><img src="docs/assets/readme/12-expressive-music-controls.png" alt="Expressive music playback controls on a mobile screen" width="320"></a> | |
+[![Collage of expressive mobile application screens](docs/assets/readme/06-expressive-mobile-apps.png)](docs/assets/readme/06-expressive-mobile-apps.png)
+
+*Expressive mobile app screens with varied layouts and color.*
+
+[![Music player screen on a phone](docs/assets/readme/07-mobile-music-player.png)](docs/assets/readme/07-mobile-music-player.png)
+
+*Mobile music player screen.*
+
+[![Gallery of colorful expressive mobile app interfaces](docs/assets/readme/08-expressive-app-gallery.png)](docs/assets/readme/08-expressive-app-gallery.png)
+
+*Gallery of colorful expressive mobile app interfaces.*
+
+[![Multiple mobile interface compositions with varied color and layout](docs/assets/readme/09-mobile-interface-compositions.png)](docs/assets/readme/09-mobile-interface-compositions.png)
+
+*Mobile screen compositions with varied color and layout.*
+
+[![Mobile messaging inbox with conversation list](docs/assets/readme/10-mobile-messaging.png)](docs/assets/readme/10-mobile-messaging.png)
+
+*Mobile messaging inbox and conversation list.*
+
+[![Mobile chat, call, and keyboard screens](docs/assets/readme/11-mobile-chat-and-calls.png)](docs/assets/readme/11-mobile-chat-and-calls.png)
+
+*Mobile chat, calling, and keyboard screens.*
+
+[![Expressive music playback controls on a mobile screen](docs/assets/readme/12-expressive-music-controls.png)](docs/assets/readme/12-expressive-music-controls.png)
+
+*Expressive mobile music playback controls.*
 
 [![Material example of expressive control shapes and component treatments](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0c73wle-8.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
 
