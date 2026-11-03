@@ -6,47 +6,42 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:m3_expressive_reference_app/m3e/m3e.dart';
-import 'package:m3_expressive_reference_app/main.dart';
 
 void main() {
-  for (final brightness in Brightness.values) {
-    for (final viewport in <({String name, Size size})>[
-      (name: 'narrow', size: const Size(390, 844)),
-      (name: 'wide', size: const Size(1000, 800)),
-    ]) {
-      testWidgets(
-        'overview ${brightness.name} ${viewport.name} golden',
-        (tester) async {
-          await tester.binding.setSurfaceSize(viewport.size);
-          addTearDown(() => tester.binding.setSurfaceSize(null));
-
-          await tester.pumpWidget(_auditApp(brightness));
-          await expectLater(
-            find.byType(ReferenceHomePage),
-            matchesGoldenFile(
-              'goldens/overview_${brightness.name}_${viewport.name}.png',
+  testWidgets('M3E connected button group updates its selected item', (
+    tester,
+  ) async {
+    var selected = 'Listen only';
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData(useMaterial3: true),
+        home: Scaffold(
+          body: StatefulBuilder(
+            builder: (context, setState) => M3EConnectedButtonGroup<String>(
+              selected: {selected},
+              items: const [
+                M3EButtonItem<String>(
+                  value: 'Watch video',
+                  label: Text('Watch video'),
+                ),
+                M3EButtonItem<String>(
+                  value: 'Listen only',
+                  label: Text('Listen only'),
+                ),
+              ],
+              onSelectionChanged: (selection) =>
+                  setState(() => selected = selection.single),
             ),
-          );
-        },
-      );
-    }
-  }
+          ),
+        ),
+      ),
+    );
 
-  for (final brightness in Brightness.values) {
-    testWidgets('search ${brightness.name} narrow golden', (tester) async {
-      await tester.binding.setSurfaceSize(const Size(390, 844));
-      addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.tap(find.text('Watch video'));
+    await tester.pumpAndSettle();
 
-      await tester.pumpWidget(_auditApp(brightness));
-      await tester.tap(find.text('Search').first);
-      await tester.pumpAndSettle();
-
-      await expectLater(
-        find.byType(ReferenceHomePage),
-        matchesGoldenFile('goldens/search_${brightness.name}_narrow.png'),
-      );
-    });
-  }
+    expect(selected, 'Watch video');
+  });
 
   testWidgets('segmented selection and disabled controls expose state', (
     tester,
@@ -239,33 +234,4 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(DatePickerDialog), findsNothing);
   });
-}
-
-Widget _auditApp(Brightness brightness) {
-  final m3eExtension = brightness == Brightness.light
-      ? M3EThemeExtension.standardLight()
-      : M3EThemeExtension.standardDark();
-
-  ThemeData createTheme(Brightness themeBrightness) => ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6750A4),
-          brightness: themeBrightness,
-        ),
-        visualDensity: VisualDensity.standard,
-        extensions: [m3eExtension],
-        cardTheme: CardThemeData(
-          elevation: 0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        ),
-      );
-
-  return MaterialApp(
-    theme: createTheme(Brightness.light),
-    darkTheme: createTheme(Brightness.dark),
-    themeMode:
-        brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark,
-    home: const ReferenceHomePage(),
-  );
 }

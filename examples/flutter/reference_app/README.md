@@ -1,6 +1,34 @@
-# Flutter reference example
+# Melo — Flutter mobile video music player
 
-This small app demonstrates Flutter Material 3 theming, system light/dark selection, and project-specific adaptive navigation for Android and iOS mobile layouts, including phones and tablets. It is a compilable reference for the documentation, not a claim of complete Material 3 Expressive fidelity.
+Melo is an English-language Flutter app for browsing videos saved in a device's photo library, watching them, or listening to their audio with the video hidden. It demonstrates a source-traceable Material 3 Expressive-inspired mobile interface; it is not an official Material specification or a claim of complete conformance.
+
+The library and player use the repository's `M3EAppBar`, `M3ESegmentedList`, `M3EConnectedButtonGroup`, and theme tokens where they fit. Video playback, permission handling, and the audio-only presentation are app-specific compositions because the repository does not provide a complete media-player component. Standard Flutter Material controls remain in use where no matching M3E component is available.
+
+## Permissions and privacy
+
+- The app checks whether video-library access was already granted. It asks for permission only after the user selects **Allow video access**.
+- Android requests video access only. Android 14+ selected-video access is supported; iOS limited-library access can be updated from the app.
+- iOS explains the request in its system dialog: “Allow Melo to find and play videos from your library.”
+- Melo reads videos locally and does not upload them. Search filters the videos currently loaded in the library; use **Load more videos** to continue through a large library.
+- **Listen only** hides the video while it plays. Playback pauses when the app is backgrounded; background audio is not implemented.
+
+The generated Android and iOS host projects are included because gallery permissions and local video playback require native mobile integration. iOS builds require Xcode on macOS.
+
+## Run and validate
+
+From this directory:
+
+```bash
+flutter pub get
+flutter devices
+flutter run -d DEVICE_ID
+flutter analyze
+flutter test
+```
+
+Video-library access and native playback should be checked on target Android and iOS devices. This environment has no physical mobile device; emulator and iOS validation results should be recorded separately.
+
+## Design and visual references
 
 ## Visual references
 
@@ -34,16 +62,4 @@ These official Material images give AI coding agents and readers visual context 
 
 *Official Material chip image. [Read the chips guidance](https://m3.material.io/components/chips/overview).*
 
-These images are linked from Google-hosted Material pages and are not copied into the repository. No Android/iOS device screenshots of the sample app are published yet. Its committed widget-test goldens use a test font and are regression fixtures, not suitable visual references; see the [testing guide](../../../docs/flutter/testing.md) and [full visual-reference gallery](../../../docs/reference/visual-reference-gallery.md).
-
-## Run and validate
-
-```bash
-flutter pub get
-flutter devices
-flutter run -d DEVICE_ID
-flutter analyze
-flutter test
-```
-
-Use `flutter devices` to find `DEVICE_ID`. iOS builds require Xcode on macOS. The example's navigation adapts at locally chosen width thresholds. Those values are implementation decisions for this sample, not Material breakpoint tokens. Replace them with project-specific, tested behavior in production. Validate on the Android and iOS versions and phone/tablet form factors your app supports.
+These images are linked from Google-hosted Material pages and are not copied into the repository. Using the repository's widgets and project tokens is not proof of M3 Expressive conformance. See the [testing guide](../../../docs/flutter/testing.md) and [full visual-reference gallery](../../../docs/reference/visual-reference-gallery.md). Validate on the Android and iOS versions and phone/tablet form factors your app supports.

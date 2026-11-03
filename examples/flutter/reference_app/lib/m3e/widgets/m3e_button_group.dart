@@ -60,9 +60,12 @@ class M3EConnectedButtonGroup<T> extends StatelessWidget {
     final shapes = context.m3e.shapes;
     final motion = context.m3e.motion;
     final spacing = context.m3e.spacing;
+    final transitionDuration = MediaQuery.of(context).disableAnimations
+        ? Duration.zero
+        : motion.durationFast;
 
     return Container(
-      height: density.height,
+      height: MediaQuery.textScalerOf(context).scale(density.height),
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainerLow,
         borderRadius: shapes.borderFull,
@@ -79,7 +82,14 @@ class M3EConnectedButtonGroup<T> extends StatelessWidget {
                 thickness: 1,
                 color: colorScheme.outlineVariant,
               ),
-            _buildSegment(context, items[i], i, colorScheme, shapes, motion, spacing),
+            _buildSegment(
+              context,
+              items[i],
+              i,
+              colorScheme,
+              transitionDuration,
+              spacing,
+            ),
           ],
         ],
       ),
@@ -91,8 +101,7 @@ class M3EConnectedButtonGroup<T> extends StatelessWidget {
     M3EButtonItem<T> item,
     int index,
     ColorScheme colorScheme,
-    dynamic shapes,
-    dynamic motion,
+    Duration transitionDuration,
     dynamic spacing,
   ) {
     final isSelected = selected.contains(item.value);
@@ -104,63 +113,72 @@ class M3EConnectedButtonGroup<T> extends StatelessWidget {
       right: isLast ? const Radius.circular(999) : Radius.zero,
     );
 
-    return AnimatedContainer(
-      duration: motion.durationFast,
-      curve: motion.curveSpatialOvershoot,
-      decoration: BoxDecoration(
-        color: isSelected ? colorScheme.secondaryContainer : Colors.transparent,
-        borderRadius: segmentRadius,
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
+    return Semantics(
+      selected: isSelected,
+      inMutuallyExclusiveGroup: !multiSelect,
+      child: AnimatedContainer(
+        duration: transitionDuration,
+        curve: context.m3e.motion.curveSpatialOvershoot,
+        decoration: BoxDecoration(
+          color:
+              isSelected ? colorScheme.secondaryContainer : Colors.transparent,
           borderRadius: segmentRadius,
-          onTap: item.enabled
-              ? () {
-                  if (multiSelect) {
-                    final next = Set<T>.from(selected);
-                    if (isSelected) {
-                      next.remove(item.value);
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: segmentRadius,
+            onTap: item.enabled
+                ? () {
+                    if (multiSelect) {
+                      final next = Set<T>.from(selected);
+                      if (isSelected) {
+                        next.remove(item.value);
+                      } else {
+                        next.add(item.value);
+                      }
+                      onSelectionChanged(next);
                     } else {
-                      next.add(item.value);
+                      onSelectionChanged({item.value});
                     }
-                    onSelectionChanged(next);
-                  } else {
-                    onSelectionChanged({item.value});
                   }
-                }
-              : null,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: density.horizontalPadding),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (item.icon != null) ...[
-                  IconTheme(
-                    data: IconThemeData(
-                      size: density == M3EDensity.compact ? 16.0 : 18.0,
-                      color: isSelected
-                          ? colorScheme.onSecondaryContainer
-                          : (item.enabled
-                              ? colorScheme.onSurfaceVariant
-                              : colorScheme.onSurface.withValues(alpha: 0.38)),
-                    ),
-                    child: item.icon!,
-                  ),
-                  SizedBox(width: spacing.space8),
-                ],
-                DefaultTextStyle(
-                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                        fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                : null,
+            child: Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: density.horizontalPadding),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (item.icon != null) ...[
+                    IconTheme(
+                      data: IconThemeData(
+                        size: density == M3EDensity.compact ? 16.0 : 18.0,
                         color: isSelected
                             ? colorScheme.onSecondaryContainer
                             : (item.enabled
-                                ? colorScheme.onSurface
-                                : colorScheme.onSurface.withValues(alpha: 0.38)),
+                                ? colorScheme.onSurfaceVariant
+                                : colorScheme.onSurface
+                                    .withValues(alpha: 0.38)),
                       ),
-                  child: item.label,
-                ),
-              ],
+                      child: item.icon!,
+                    ),
+                    SizedBox(width: spacing.space8),
+                  ],
+                  DefaultTextStyle(
+                    style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                          fontWeight:
+                              isSelected ? FontWeight.w700 : FontWeight.w500,
+                          color: isSelected
+                              ? colorScheme.onSecondaryContainer
+                              : (item.enabled
+                                  ? colorScheme.onSurface
+                                  : colorScheme.onSurface
+                                      .withValues(alpha: 0.38)),
+                        ),
+                    child: item.label,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

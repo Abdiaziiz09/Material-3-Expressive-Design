@@ -56,6 +56,9 @@ class _M3ESegmentedListState extends State<M3ESegmentedList> {
     final spacing = context.m3e.spacing;
     final shapes = context.m3e.shapes;
     final motion = context.m3e.motion;
+    final transitionDuration = MediaQuery.of(context).disableAnimations
+        ? Duration.zero
+        : motion.durationFast;
 
     final insets = widget.padding ?? spacing.all16;
 
@@ -117,7 +120,7 @@ class _M3ESegmentedListState extends State<M3ESegmentedList> {
                       widget.items.length,
                       colorScheme,
                       spacing,
-                      motion,
+                      transitionDuration,
                     ),
                   ],
                 ],
@@ -136,7 +139,7 @@ class _M3ESegmentedListState extends State<M3ESegmentedList> {
     int total,
     ColorScheme colorScheme,
     dynamic spacing,
-    dynamic motion,
+    Duration transitionDuration,
   ) {
     final isPressed = _pressedId == item.id;
 
@@ -145,8 +148,8 @@ class _M3ESegmentedListState extends State<M3ESegmentedList> {
       onTapUp: (_) => setState(() => _pressedId = null),
       onTapCancel: () => setState(() => _pressedId = null),
       child: AnimatedContainer(
-        duration: motion.durationFast,
-        curve: motion.curveSpatialOvershoot,
+        duration: transitionDuration,
+        curve: context.m3e.motion.curveSpatialOvershoot,
         color: isPressed ? colorScheme.surfaceContainerHighest : Colors.transparent,
         child: ListTile(
           leading: item.leading,
