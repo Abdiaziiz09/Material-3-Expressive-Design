@@ -1,6 +1,6 @@
 # Flutter component snippet catalog
 
-This catalog helps any AI coding agent find reusable code in the repository without relying on vendor-specific prompt files. It points to the source files in the Flutter reference app so the implementation remains the source of truth instead of being copied into a second, drifting snippet library.
+This catalog helps any AI coding agent find reusable code in the repository without relying on vendor-specific prompt files. It points to the source files in the Flutter reference app so the implementation remains the source of truth instead of being copied into a second, drifting snippet library. These are practical examples, not "golden" or normative snippets.
 
 > **Scope and evidence:** Widgets in `examples/flutter/reference_app/lib/m3e/` are repository-authored examples. They are not a published Flutter package, an official Google implementation, or proof of M3 Expressive conformance. The examples below use APIs available in this repository's reference app; verify the target project's Flutter and package versions before adapting them.
 
@@ -136,6 +136,7 @@ Use it only when grouped list treatment fits the content. The current implementa
 - Read the selected widget's implementation and tests; a catalog entry is a pointer, not evidence of full conformance.
 - Check constructor names, imports, and dependencies in the target project's pinned Flutter SDK and lockfile.
 - Keep project token values distinct from official Material guidance; cite the evidence ledger and token registry.
+- Do not assume a `Card`, button, or navigation widget is either fully M3E or forbidden solely from its Flutter class name. Verify the component requirement and evidence.
 - Prefer Flutter Material widgets when they satisfy the verified requirement. Do not force a custom widget or navigation pattern where it does not fit.
 - Test accessibility, text scaling, RTL, reduced motion, responsive states, and platform behavior applicable to the target app.
 - Follow the [implementation workflow](implementation-workflow.md) and complete the [validation checklist](validation-checklist.md).

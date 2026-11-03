@@ -14,6 +14,22 @@ final m3e = context.m3e;
 final theme = Theme.of(context);
 ```
 
+## Implementation source map
+
+The tables below document available names and values; these reference-app files are the implementation source of truth for the current APIs. Check the target application's own dependencies and version before using them. Do not create a second `tokens.json` or constants file that can drift from the implementation.
+
+| Token area | Accessor | Reference-app implementation | Scope |
+|---|---|---|---|
+| Spacing and `EdgeInsets` helpers | `context.m3e.spacing` | [`m3e_spacing.dart`](https://github.com/Abdiaziiz09/Flutter-M3E-Design/blob/main/examples/flutter/reference_app/lib/m3e/theme/m3e_spacing.dart) | Project-defined scale and helpers; values and evidence are listed below. |
+| Corner radii and shape definitions | `context.m3e.shapes` | [`m3e_shapes.dart`](https://github.com/Abdiaziiz09/Flutter-M3E-Design/blob/main/examples/flutter/reference_app/lib/m3e/theme/m3e_shapes.dart) | Repository implementation; shape taxonomy or values do not prove official component conformance. |
+| Typography flex styles | `context.m3e.typography` | [`m3e_typography_flex.dart`](https://github.com/Abdiaziiz09/Flutter-M3E-Design/blob/main/examples/flutter/reference_app/lib/m3e/theme/m3e_typography_flex.dart) | The `*Flex` roles are repository implementation values; use `TextTheme` where appropriate and verify source claims. |
+| Motion durations, curves, and springs | `context.m3e.motion` | [`m3e_motion.dart`](https://github.com/Abdiaziiz09/Flutter-M3E-Design/blob/main/examples/flutter/reference_app/lib/m3e/theme/m3e_motion.dart) | Values and spring parameters are project choices unless an evidence note says otherwise. |
+| Semantic color roles | `Theme.of(context).colorScheme` | Flutter `ColorScheme` API | Flutter/Material API, not an `M3EThemeExtension` token set. |
+| Button density | `M3EDensity` | [`m3e_button_group.dart`](https://github.com/Abdiaziiz09/Flutter-M3E-Design/blob/main/examples/flutter/reference_app/lib/m3e/widgets/m3e_button_group.dart) | Component-specific implementation values, not global spacing tokens. |
+| Adaptive navigation widths | `M3EAdaptiveScaffold` | [`m3e_adaptive_scaffold.dart`](https://github.com/Abdiaziiz09/Flutter-M3E-Design/blob/main/examples/flutter/reference_app/lib/m3e/widgets/m3e_adaptive_scaffold.dart) | Project-specific responsive decisions, not universal breakpoints or design tokens. |
+
+When a token changes, update the corresponding registry entry and review dependent examples. The source and this registry must agree; tests or validation should not infer official status from a token name.
+
 ---
 
 ## 1. Spacing tokens (`context.m3e.spacing`)

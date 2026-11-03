@@ -212,6 +212,8 @@ See the [full component decision matrix](../components/component-decision-matrix
 | Confirmation badge | `Badge` | — | Flutter API verified |
 | Content separator | `Divider` | — | Use spacing first; divider only for meaningful boundaries |
 
+The Flutter widgets in this table are implementation options, not automatically M3 Expressive components. Verify the applicable Material guidance, target Flutter API, and component evidence. Do not label baseline widgets “deprecated for M3E” unless an authoritative source explicitly deprecates them.
+
 ---
 
 ## Step 5: Apply expressive shapes

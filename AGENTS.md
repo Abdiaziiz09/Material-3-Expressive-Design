@@ -8,6 +8,8 @@ This file is the repository's canonical agent guidance, but agent products diffe
 
 Use the [component snippet catalog](docs/ai-agent-guide/component-snippets.md) as a map to the reference app's current implementations. Those widgets and examples are repository-authored implementation references, not official Google specifications or guaranteed M3E-conformant components. Inspect their source and verify their APIs against the target Flutter/package versions before reuse.
 
+Write repository-authored documentation and agent instructions in English. Preserve the target application's requested user-facing language separately.
+
 ## Before changing UI
 
 1. Read [scope and terminology](docs/getting-started/scope.md), [support matrix](docs/reference/support-matrix.md), and the applicable sections of this guide.
@@ -21,12 +23,14 @@ Use the [component snippet catalog](docs/ai-agent-guide/component-snippets.md) a
 - Do not equate `useMaterial3: true` with full M3 Expressive implementation.
 - Reuse Flutter Material widgets when verified behavior meets the requirement. Build custom widgets only for a documented gap.
 - Do not ban Flutter's built-in Material widgets as a blanket rule. Select a built-in or repository component based on the verified requirement and evidence; the presence of a similarly named M3E component does not make it appropriate for every screen.
+- Do not label a Flutter Material widget deprecated for M3E, or prohibit it, unless an applicable authoritative source says so. A baseline Material widget is not automatically M3E; identify its evidence and use it only when its verified behavior meets the requirement. If an explicit expressive requirement is unsupported, document the gap and the chosen fallback/custom composition rather than silently claiming parity or stopping unrelated work.
 - Do not invent a repository M3E component where none exists. In particular, do not force navigation, card, or other component patterns into an app that does not need them; use a documented application-specific composition when there is a verified gap.
 - Prefer semantic `ColorScheme` roles and theme configuration over scattered hard-coded colors.
 - Do not invent design tokens, dimensions, timing, state behavior, or support claims. Label application-specific decisions.
 - Respect text scaling, semantic labels, keyboard/focus behavior, contrast, pointer and touch input, responsive layouts, and RTL.
 - Test relevant component states and each available target platform. Report what was not tested.
 - Never claim full compliance without a defined scope, source evidence, and visual/accessibility validation.
+- Before removing existing guidance or examples, identify the exact material and rationale for the maintainer and wait for approval; prefer precise evidence labels or corrections when removal is not necessary.
 
 ## Strict Token Enforcement (Zero Magic Numbers)
 
