@@ -11,7 +11,7 @@ Start with:
 - [Foundations](docs/foundations/index.md)
 - [Component catalog](docs/components/index.md)
 - [Flutter guide](docs/flutter/index.md)
-- [Platform guides](docs/platforms/index.md)
+- [Android and iOS mobile guides](docs/platforms/index.md)
 - [Source catalog](docs/reference/official-sources.md)
 - [Phase 0/1 audit and 38-entry component inventory](docs/reference/m3e-phase0-1-audit.md)
 - [Component inventory CSV](docs/reference/m3e-master-component-inventory.csv)

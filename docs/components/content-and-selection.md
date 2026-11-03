@@ -12,7 +12,7 @@ For the checked Material source metadata, local Flutter API availability, state 
 | Menus | `MenuAnchor`, `DropdownMenu`, `PopupMenuButton` | Prefer documented Flutter APIs appropriate to the interaction; check keyboard and focus handling. [Material menus](https://m3.material.io/components/menus/overview). |
 | Carousel | `CarouselView` | API and behavior vary by Flutter release; check current API and accessibility. [Guide](https://m3.material.io/components/carousel/overview). |
 
-Avoid nesting interactive controls without defined semantics and focus order. Test selected, unselected, disabled, focused, hovered, and pressed states when applicable.
+Avoid nesting interactive controls without defined semantics and focus order. Test selected, unselected, disabled, focused, and pressed states when applicable; test hover only when the mobile app supports a pointer.
 
 ## Use and validation
 
@@ -20,5 +20,5 @@ Avoid nesting interactive controls without defined semantics and focus order. Te
 - Choose a chip by action/selection role. Expose selected state semantically and ensure users can identify the selected value without color alone.
 - Use a list row to expose a clear primary label and optional supporting/action content. Keep the whole hit region and nested actions unambiguous.
 - Checkbox supports independent choices, radio supports one choice in a group, and switch communicates an on/off setting; follow each component's official usage guidance.
-- Test selection changes, disabled state, focus/hover, keyboard operation, large text, and long/localized labels.
-- On wide layouts, avoid stretched, overly dense content; use constraints and task-appropriate composition rather than a universal card width.
+- Test selection changes, disabled state, focus, supported external-keyboard operation, large text, and long/localized labels.
+- On tablets and foldables, avoid stretched, overly dense content; use constraints and task-appropriate composition rather than a universal card width.

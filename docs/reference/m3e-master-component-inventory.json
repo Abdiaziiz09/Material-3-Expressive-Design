@@ -67,7 +67,7 @@
     "source_evidence_level": "Metadata only",
     "existing_test_evidence": "No visual fixture or interaction test",
     "priority": "Critical",
-    "next_required_action": "Catalog variants, size options, shape and state behavior; add semantics and focus/hover tests."
+    "next_required_action": "Catalog variants, size options, shape and state behavior; add semantics and focus tests plus hover tests only for supported mobile pointer input."
   },
   {
     "id": "M3E-006",
@@ -459,7 +459,7 @@
     "source_evidence_level": "Metadata only",
     "existing_test_evidence": "No fixture/test",
     "priority": "High",
-    "next_required_action": "Specify standard/modal behavior, drag/dismissal, height/scroll, focus, keyboard, large-screen and desktop adaptation."
+    "next_required_action": "Specify standard/modal behavior, drag/dismissal, height/scroll, focus, keyboard/IME, phone/tablet sizing, and mobile OS adaptation."
   },
   {
     "id": "M3E-034",
@@ -529,6 +529,6 @@
     "source_evidence_level": "Metadata only",
     "existing_test_evidence": "No fixture/test",
     "priority": "Medium",
-    "next_required_action": "Specify hover/focus/touch timing, placement, screen-reader relationships and ensure essential information is elsewhere."
+    "next_required_action": "Specify applicable focus/touch behavior, placement, screen-reader relationships, and hover behavior only for supported mobile pointer input; ensure essential information is available elsewhere."
   }
 ]

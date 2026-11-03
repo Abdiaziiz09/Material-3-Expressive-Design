@@ -63,12 +63,9 @@ nav:
       - Testing: flutter/testing.md
   - Platforms:
       - Overview: platforms/index.md
-      - Android: platforms/android.md
-      - iOS: platforms/ios.md
-      - Web: platforms/web.md
-      - Windows: platforms/windows.md
-      - macOS: platforms/macos.md
-      - Linux: platforms/linux.md
+      - Android mobile: platforms/android.md
+      - Android foldables: platforms/foldables.md
+      - iOS mobile: platforms/ios.md
   - Design recipes:
       - Overview: design-recipes/index.md
       - Expressive screen recipes: design-recipes/expressive-screen-recipes.md

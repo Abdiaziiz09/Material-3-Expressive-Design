@@ -20,7 +20,7 @@ See the [design token registry](design-token-registry.md) for the full reference
 | `space16` | 16dp | Standard card padding; compact screen margin |
 | `space24` | 24dp | Section spacing; tablet content margin |
 | `space32` | 32dp | Major block separation |
-| `space48` | 48dp | Minimum touch target; desktop breathing room |
+| `space48` | 48dp | Project token for touch-target examples and mobile layout spacing |
 
 ---
 
@@ -48,7 +48,7 @@ LayoutBuilder(
 
 ### Never use fixed widths or heights
 
-Fixed dimensions break under text scaling, translation, split-screen, and window resizing.
+Fixed dimensions can break under text scaling, translation, Android split-screen, and iPad multitasking/resizing.
 
 ```dart
 // WRONG
@@ -108,7 +108,7 @@ class _WindowSizeClass {
 
 ### Content max-width constraint
 
-On wide screens, constrain readable content rather than stretching it edge-to-edge.
+On tablets and other wide mobile screens, constrain readable content rather than stretching it edge-to-edge.
 
 ```dart
 Center(

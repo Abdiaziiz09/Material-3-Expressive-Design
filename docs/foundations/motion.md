@@ -25,7 +25,7 @@ M3E specifies two distinct spring physics schemes. Choosing the wrong one produc
 
 | Token | Value | Use for |
 |---|---|---|
-| `durationFast` | 150ms | Focus rings, hover highlights, micro-interactions |
+| `durationFast` | 150ms | Focus indicators, supported pointer-hover highlights, and micro-interactions |
 | `durationMedium` | 300ms | Selected/unselected state changes, expand/collapse, navigation |
 | `durationSlow` | 500ms | Full-screen transitions, large container transforms |
 

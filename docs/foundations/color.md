@@ -10,7 +10,7 @@ Use a role for its semantic purpose and validate contrast for the actual pairing
 
 Flutter supports light/dark `ThemeData` and `ColorScheme`. Create both schemes and let the app's `themeMode` reflect the user or system preference. `ColorScheme.fromSeed` is a Flutter Material scheme-generation API, not proof of exact M3 Expressive color fidelity.
 
-Dynamic color is platform/package-dependent. The third-party `dynamic_color` package documents Android S+ wallpaper color and additional desktop integrations; inspect its current package documentation and tested platform setup before enabling it. Provide a stable fallback scheme, allow user preference where appropriate, and test contrast after dynamic colors are applied.
+Dynamic color is platform/package-dependent. Verify whether the chosen package/API supports the target Android or iOS version before enabling it; do not assume Android wallpaper color behavior is available on iOS. Provide a stable fallback scheme, allow user preference where appropriate, and test contrast after dynamic colors are applied.
 
 ## Implementation
 

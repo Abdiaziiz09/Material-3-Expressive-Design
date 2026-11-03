@@ -323,7 +323,7 @@ class _SearchContent extends StatelessWidget {
           child: ListTile(
             leading: Icon(Icons.layers_outlined),
             title: Text('Navigation rails'),
-            subtitle: Text('Adaptive desktop and tablet layout patterns'),
+            subtitle: Text('Adaptive phone and tablet layout patterns'),
           ),
         ),
       ],

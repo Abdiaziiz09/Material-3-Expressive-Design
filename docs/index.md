@@ -1,13 +1,13 @@
-# M3 Expressive implementation reference
+# M3 Expressive Flutter mobile reference
 
-This independent guide helps teams build Material 3 Expressive-informed interfaces with Flutter while keeping design guidance, Flutter API behavior, and implementation choices distinct.
+This independent guide helps teams build Material 3 Expressive-informed Android and iOS mobile interfaces with Flutter, including phone, tablet, and foldable layouts, while keeping design guidance, Flutter API behavior, and implementation choices distinct.
 
 ## Start
 
 - Read [scope and terminology](getting-started/scope.md) before applying design claims.
-- Check [platform and feature support](reference/support-matrix.md).
+- Check [Android and iOS mobile support](reference/support-matrix.md).
 - Use the [38-entry component inventory](reference/m3e-master-component-inventory.csv), [source-evidence ledger](reference/m3e-source-evidence-ledger.csv), and [Phase 0/1 audit](reference/m3e-phase0-1-audit.md) to distinguish listed topics from verified requirements.
-- Navigate [foundations](foundations/index.md), [components](components/index.md), [Flutter](flutter/index.md), and [platform guidance](platforms/index.md).
+- Navigate [foundations](foundations/index.md), [components](components/index.md), [Flutter](flutter/index.md), and [mobile platform guidance](platforms/index.md).
 - For agents, begin with the repository-root `AGENTS.md` and [workflow](ai-agent-guide/implementation-workflow.md).
 
 ## Evidence and dates

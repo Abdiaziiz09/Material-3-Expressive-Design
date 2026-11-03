@@ -30,7 +30,7 @@ Flutter facts below describe the cited APIs, not guaranteed behavior on every re
 - Ensure each option has a meaningful text or semantic label; do not rely on icons or color alone.
 - Verify selection announcements and keyboard traversal on the selected Flutter release and target screen readers.
 - Check wrapping/overflow under large text, narrow widths, localization, and RTL. Avoid forcing a horizontal row when it clips.
-- Test selected, unselected, disabled, focused, hovered, and pressed states that the chosen widget exposes.
+- Test selected, unselected, disabled, focused, and pressed states that the chosen widget exposes; test hover only if the mobile app supports a pointer.
 
 ## Split buttons
 
@@ -42,7 +42,7 @@ Flutter facts below describe the cited APIs, not guaranteed behavior on every re
 
 - Give both controls distinct accessible names and focus/activation behavior; identify the menu trigger as opening options.
 - Keep menu actions related and avoid duplicating the primary action in a confusing way.
-- Verify menu placement, dismissal, focus return, keyboard navigation, pointer/touch use, and behavior near screen edges.
+- Verify menu placement, dismissal, focus return, external-keyboard navigation where supported, touch use, and behavior near screen edges.
 - Test disabled and loading states independently for the primary command and menu trigger; avoid a visually enabled menu trigger with no available options unless intentional.
 - Confirm the composed hit targets remain distinguishable at text scale and in RTL.
 
@@ -58,7 +58,7 @@ Flutter facts below describe the cited APIs, not guaranteed behavior on every re
 - Expose a clear open/close state, menu-item labels, focus order, Escape/back dismissal as appropriate, and focus return to the trigger.
 - Ensure actions remain reachable and do not overlap system controls, content, or the on-screen keyboard.
 - Verify motion and reduced-motion behavior against current primary guidance; do not invent durations or easing values.
-- Check small and large windows, touch and keyboard/pointer interaction, screen-reader announcements, and whether the open menu obscures important content.
+- Check phone/tablet screen sizes, touch interaction, supported external-keyboard use, screen-reader announcements, and whether the open menu obscures important content.
 
 ## Badges
 
@@ -92,8 +92,8 @@ Flutter facts below describe the cited APIs, not guaranteed behavior on every re
 
 - Choose modal versus non-modal behavior according to the task and source guidance; define whether background content remains interactive and how dismissal works.
 - For modal behavior, test focus containment/return, Escape/back behavior, barrier interaction, and assistive-technology announcements. For non-modal behavior, ensure the main task remains operable.
-- Define width and placement from available content/window constraints rather than inventing a universal breakpoint. Support RTL edge placement and resizing.
-- Check narrow/mobile windows, large text, keyboard visibility, scrolling, desktop pointer and keyboard input, and whether sheet content can be dismissed or reached without gestures alone.
+- Define width and placement from available mobile screen constraints rather than inventing a universal breakpoint. Support RTL edge placement and phone/tablet resizing.
+- Check phone and tablet constraints, large text, keyboard/IME visibility, scrolling, and whether sheet content can be dismissed or reached without gestures alone.
 - Keep navigation-drawer mappings distinct in documentation and semantics.
 
 ## Time pickers
@@ -105,12 +105,12 @@ Flutter facts below describe the cited APIs, not guaranteed behavior on every re
 - Select the entry mode that fits the task and user context; verify that users can reach the alternative mode where appropriate.
 - Check localized labels, 12/24-hour conventions, keyboard entry, dial interaction, validation/error copy, cancellation, and confirm behavior in the target locale.
 - Treat time zone, date association, daylight-saving interpretation, allowed ranges, and business rules as application concerns; communicate them where ambiguity could affect the result.
-- Test text scaling, narrow windows, RTL, screen-reader operation, focus movement, and the complete dialog dismissal/action model.
+- Test text scaling, phone/tablet constraints, RTL, screen-reader operation, focus movement, and the complete dialog dismissal/action model.
 - Verify `TimePickerTheme` customization against the exact Flutter SDK and current design source; do not hard-code inferred tokens or motion.
 
 ## Cross-component validation checklist
 
-For each component and target configuration, record the Flutter version, platform, window/viewport, input mode, locale/direction, and accessibility tools used. Validate the relevant default, selected/open, disabled, focused, hovered, pressed, error, and dismissal states; do not force irrelevant states onto a component. Check semantics, keyboard and touch/pointer interaction, contrast, large text, responsive resizing, and RTL. Compare visual details with the official component source directly. Record application-specific choices separately from official design requirements and Flutter API facts.
+For each component and target configuration, record the Flutter version, Android/iOS version, device form factor, available screen constraints, input mode, locale/direction, and accessibility tools used. Validate the relevant default, selected/open, disabled, focused, pressed, error, and dismissal states; check hover only if the mobile app supports a pointer. Check semantics, touch and any supported external input, contrast, large text, phone/tablet resizing, and RTL. Compare visual details with the official component source directly. Record application-specific choices separately from official design requirements and Flutter API facts.
 
 ## Sources
 

@@ -16,7 +16,7 @@ This maintained entry file points to canonical documentation; it is intentionall
 - Foundation index: `docs/foundations/index.md`
 - Component index: `docs/components/index.md`
 - Flutter implementation: `docs/flutter/index.md`
-- Platform overview: `docs/platforms/index.md`
+- Android and iOS mobile platform guidance: `docs/platforms/index.md`
 - Source catalog: `docs/reference/official-sources.md`
 - Support matrix: `docs/reference/support-matrix.md`
 - Component verification ledger: `docs/reference/component-verification-ledger.md`

@@ -9,7 +9,7 @@ Flutter's official testing guidance describes unit, widget, and integration test
 - **Integration:** navigation flows and platform integration on target devices.
 - **Visual:** screenshots at representative sizes, themes, and text scales; review diffs rather than treating pixel equality as a design oracle.
 
-Flutter widget-test goldens have an important rendering limitation: fallback glyphs use the Ahem test font, so text appears as block glyphs in the committed PNGs. Goldens can flag geometry, color, and layout regressions in this renderer, but they do not validate real glyph typography, browser/device rendering, platform parity, or M3 Expressive visual conformance. Visual inspection of these fixtures supports only that no obvious fixture geometry clipping was observed under this renderer.
+Flutter widget-test goldens have an important rendering limitation: fallback glyphs use the Ahem test font, so text appears as block glyphs in the committed PNGs. Goldens can flag geometry, color, and layout regressions in this renderer, but they do not validate real glyph typography, Android/iOS device rendering, parity between the two mobile platforms, or M3 Expressive visual conformance. Visual inspection of these fixtures supports only that no obvious fixture geometry clipping was observed under this renderer.
 
 ## Example commands
 
@@ -21,4 +21,4 @@ flutter test integration_test
 
 The integration command requires integration tests and appropriate devices to be configured. Do not report it as passed if it was not run.
 
-Also run `python scripts/validate_docs.py`, `python scripts/validate_links.py`, and `mkdocs build --strict` for documentation changes. Document the OS, Flutter version, device/browser, test results, and known gaps.
+Also run `python scripts/validate_docs.py`, `python scripts/validate_links.py`, and `mkdocs build --strict` for documentation changes. Document the host OS, Flutter version, Android/iOS device or simulator, test results, and known gaps.

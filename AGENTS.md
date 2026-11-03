@@ -5,7 +5,7 @@ Use this repository as an independent implementation reference, not as an offici
 ## Before changing UI
 
 1. Read [scope and terminology](docs/getting-started/scope.md), [support matrix](docs/reference/support-matrix.md), and the applicable sections of this guide.
-2. Identify framework, Flutter version, target platforms, viewport/window behavior, input devices, localization/RTL needs, and accessibility requirements.
+2. Identify the target as an Android or iOS Flutter mobile app, including its phone/tablet/foldable form factors, Flutter version, viewport/orientation behavior, touch and any supported external input, localization/RTL needs, and accessibility requirements. Web and desktop are out of scope for this repository.
 3. Read the relevant foundation and component pages, then check their primary-source references and version notes.
 4. Separate official M3 guidance from Flutter API facts and this repository's implementation recommendations.
 5. For component scope and evidence status, consult the [38-entry inventory](docs/reference/m3e-master-component-inventory.csv), [source-evidence ledger](docs/reference/m3e-source-evidence-ledger.csv), and [Phase 0/1 audit](docs/reference/m3e-phase0-1-audit.md). Do not treat a listed API or a documentation-readiness score as proof of M3E conformance.
@@ -197,7 +197,7 @@ Widget buildActionTileCompliant(BuildContext context, String title) {
 
 ### Scenario 3: Hit Target Boundary Clipping on Dense Controls
 
-**Root Cause**: Shrinking buttons or interactive elements without preserving a usable activation area. Flutter's accessibility guidance recommends usable tap targets and cites platform recommendations of 48x48 dp for Android and 44x44 pt for iOS. This is distinct from WCAG 2.2 SC 2.5.8, which sets a 24x24 CSS-pixel minimum for web pointer targets with defined exceptions; do not describe 48x48 dp as a universal or WCAG minimum.
+**Root Cause**: Shrinking buttons or interactive elements without preserving a usable activation area. Flutter's accessibility guidance cites platform recommendations of 48x48 dp for Android and 44x44 pt for iOS. Treat these as mobile-platform recommendations, not universal dimensions or WCAG conformance criteria; identify and test any accessibility standard required by the app separately.
 
 ❌ **Non-Compliant Example**:
 ```dart

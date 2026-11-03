@@ -42,7 +42,7 @@ class M3ESpacing {
   /// Generous card padding and content grouping (20dp).
   final double space20;
 
-  /// Section spacing and tablet/desktop content margins (24dp).
+  /// Section spacing and tablet content margins (24dp).
   final double space24;
 
   /// Major block separation and hero section gaps (32dp).
@@ -51,7 +51,7 @@ class M3ESpacing {
   /// Extra large sectional spacing (40dp).
   final double space40;
 
-  /// Large viewport breathing room and desktop margins (48dp).
+  /// Large-screen breathing room and tablet margins (48dp).
   final double space48;
 
   /// Hero container vertical padding and splash spacing (64dp).

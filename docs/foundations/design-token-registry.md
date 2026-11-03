@@ -33,7 +33,7 @@ Evidence: **Material guidance** (base grid principle) + **Custom** (exact scale 
 | `space24` | 24dp | `m3e.spacing.space24` | Section spacing; tablet content margins |
 | `space32` | 32dp | `m3e.spacing.space32` | Major block separation; hero section gap |
 | `space40` | 40dp | `m3e.spacing.space40` | Extra-large section spacing |
-| `space48` | 48dp | `m3e.spacing.space48` | Minimum touch target; desktop breathing room |
+| `space48` | 48dp | `m3e.spacing.space48` | Project token for touch-target examples and mobile layout spacing |
 | `space64` | 64dp | `m3e.spacing.space64` | Hero container padding; splash spacing |
 
 ### Pre-built EdgeInsets shortcuts
@@ -290,9 +290,9 @@ Always pick a role by **content purpose**, not by visual size:
 | Role | Flutter accessor | Use for |
 |---|---|---|
 | `displayLarge` | `textTheme.displayLarge` | Hero numbers, large hero text |
-| `displayMedium` | `textTheme.displayMedium` | Hero headlines on wide screens |
-| `displaySmall` | `textTheme.displaySmall` | Prominent page titles (large viewports) |
-| `headlineLarge` | `textTheme.headlineLarge` | Section headers on large screens |
+| `displayMedium` | `textTheme.displayMedium` | Hero headlines on tablets and other large mobile screens |
+| `displaySmall` | `textTheme.displaySmall` | Prominent page titles (large mobile viewports) |
+| `headlineLarge` | `textTheme.headlineLarge` | Section headers on tablets and other large mobile screens |
 | `headlineMedium` | `textTheme.headlineMedium` | App bar title (large layout), section headers |
 | `headlineSmall` | `textTheme.headlineSmall` | Card titles, modal headers |
 | `titleLarge` | `textTheme.titleLarge` | App bar title (standard); dialog title |

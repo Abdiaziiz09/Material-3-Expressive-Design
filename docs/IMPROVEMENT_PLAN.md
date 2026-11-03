@@ -2,7 +2,7 @@
 
 **Target repository:** https://github.com/Abdiaziiz09/Flutter-M3E-Design
 **Review date:** 2026-10-24
-**Targets:** Flutter on Android, iOS, and desktop (Windows, macOS, Linux)
+**Targets:** Flutter mobile apps on Android and iOS, including phones, tablets, and foldables
 **Purpose of this file:** a prioritized, source-backed list of what must change before this repository can be called a complete, production-ready Material 3 Expressive (M3E) reference. It is a plan, not a record of completed work.
 
 ---
@@ -16,7 +16,7 @@
 - No code was changed, and nothing was pushed to the repository.
 - `flutter test`, `flutter analyze`, `python scripts/validate_docs.py`, `python scripts/validate_links.py` and `mkdocs build --strict` were **not run**. No Flutter toolchain or repository checkout was available.
 - The contents of `examples/flutter/reference_app/` could not be opened (the page blocks automated access). Statements about the app below come from the repository's own ledger and README, not from reading the Dart files.
-- The platform guides for Android, iOS, Web, Windows, macOS and Linux were not individually opened. Only the platform index was read.
+- This historical review did not individually inspect every mobile platform guide; only the platform index was read.
 
 Anything in this plan that depends on those files is marked **(verify)**.
 
@@ -99,19 +99,18 @@ Priorities: **P0** blocks any production-ready claim, **P1** required for M3E al
 ### P1: Testing
 
 - [ ] **Replace Ahem-font goldens** with real-font goldens using `alchemist` (or Flutter's built-in `matchesGoldenFile` with loaded fonts). Keep CI goldens deterministic across OSes.
-- [ ] **State matrix tests** for each component: default, hover, focus, pressed, selected, disabled, loading, error, expanded.
+- [ ] **State matrix tests** for each component: default, focus, pressed, selected, disabled, loading, error, expanded; include only states relevant to mobile input.
 - [ ] **Text scale and locale matrix:** test the largest relevant platform text settings, plus optional project-defined 1.0 / 1.5 / 2.0 scale scenarios, long strings, RTL, and one non-Latin locale. The 2.0 scenario is not a universal platform maximum.
 - [ ] **Accessibility tests:** semantics, minimum tap target (`kMinInteractiveDimension`), contrast checks via Flutter's `meetsGuideline` matchers, keyboard traversal.
-- [ ] **`integration_test`** on at least one Android and one iOS target, plus one desktop target.
+- [ ] **`integration_test`** on at least one Android and one iOS mobile target, including phone/tablet form factors as available.
 
-### P2: Platforms (Android, iOS, desktop)
+### P2: Mobile platforms (Android and iOS)
 
-- [ ] **Confirm runner folders** (`android/`, `ios/`, `macos/`, `windows/`, `linux/`) exist in the reference app and build in CI **(verify)**.
+- [ ] **Confirm Android and iOS runner folders** exist in the reference app and build in CI **(verify)**.
 - [ ] **Android:** edge-to-edge and system-bar handling, predictive back, dynamic color, large-screen and foldable behavior. Validate on real devices or emulators and record results.
 - [ ] **iOS:** safe areas, back-swipe, text-scale and Dynamic Type behavior, haptics, and a documented decision on when to use `cupertino_ui` adaptive widgets versus Material.
-- [ ] **Desktop:** pointer hover states, keyboard focus rings and shortcuts, window resizing across breakpoints, scrollbar behavior, text selection, and menu-bar conventions per OS.
-- [ ] **Per-platform pages** (`docs/platforms/*.md`): add a "tested / not tested" table with date, device, OS and Flutter version.
-- [ ] **Responsive recipes** for compact / medium / expanded widths using `LayoutBuilder`, with canonical layouts (list-detail, supporting pane, feed). Cite Material's layout and breakpoint pages from `link_sources.md`.
+- [ ] **Mobile platform pages** (`docs/platforms/android.md`, `docs/platforms/ios.md`): add a "tested / not tested" table with date, device, OS and Flutter version.
+- [ ] **Responsive mobile recipes** for phone, tablet, foldable, orientation and multitasking constraints using `LayoutBuilder`. Cite relevant Material adaptive-layout guidance from `link_sources.md`.
 
 ### P2: AI-agent workflow (`AGENTS.md`)
 
@@ -200,7 +199,7 @@ A component is "M3E-aligned" only when **all** of these are recorded:
 3. Every applicable state tested, with unsupported states listed.
 4. Text-scale, RTL and long-content tests pass.
 5. Accessibility checks pass (semantics, target size, contrast, keyboard).
-6. Tested on named Android, iOS and desktop targets, or the gaps are reported.
+6. Tested on named Android and iOS mobile devices/simulators, or the gaps are reported.
 7. Tokens used; no magic numbers.
 
 Required commands (all must be run and their real output reported):
@@ -243,7 +242,6 @@ flutter test integration_test   # only where devices are configured
 | M3E-R17 | Responsive recipes without `AdaptiveScaffold` | P2 | Three breakpoints demonstrated |
 | M3E-R18 | Android validation | P2 | Dated results table |
 | M3E-R19 | iOS validation | P2 | Dated results table |
-| M3E-R20 | Windows / macOS / Linux validation | P2 | Dated results table |
 | M3E-R21 | `AGENTS.md` token and error-handling rules | P2 | Merged, lint script in CI |
 | M3E-R22 | Make `llms-full.txt` complete or document its scope | P2 | Decision recorded |
 

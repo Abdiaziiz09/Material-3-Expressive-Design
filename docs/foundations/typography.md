@@ -29,4 +29,4 @@ This is a template for a Flutter theme, not a guarantee of a current M3 Expressi
 
 ## Verification
 
-Review headings, body, labels, numeric content, long translations, large text scale, and RTL. Confirm text remains readable and controls grow or reflow instead of clipping. Verify that long translations, dense layouts, and narrow windows do not force overflow or cut off essential labels.
+Review headings, body, labels, numeric content, long translations, large text scale, and RTL. Confirm text remains readable and controls grow or reflow instead of clipping. Verify that long translations, dense layouts, and phone/tablet constraints do not force overflow or cut off essential labels.

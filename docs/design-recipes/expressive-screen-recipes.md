@@ -128,7 +128,7 @@ Chat interfaces require careful treatment of content groups, timestamps, and foc
 - Ensure high volume text does not overlap timestamps or message edges
 - Test keyboard input, IME handling, and message send actions
 - Verify accessible names for actions and message content
-- Check for safe area and system-inset behavior on mobile and desktop layouts
+- Check for safe areas and system insets on Android and iOS phones and tablets
 
 ## Notifications and activity
 
@@ -188,6 +188,6 @@ When implementing a screen recipe:
 - prefer theme-driven color and shape values over hard-coded values
 - verify supported Flutter APIs against the chosen SDK and platform
 - document each custom implementation choice and the source gap it addresses
-- validate keyboard, pointer, touch, localization, and accessibility behavior before claiming fidelity
+- validate touch, any supported external input, localization, and accessibility behavior before claiming fidelity
 
 This file adds practical, app-oriented guidance. It is intended to complement the [component coverage matrix](../reference/component-coverage.md), [support matrix](../reference/support-matrix.md), and the [validation checklist](../ai-agent-guide/validation-checklist.md).

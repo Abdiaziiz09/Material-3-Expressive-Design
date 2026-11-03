@@ -43,14 +43,21 @@ The following canonical Material component pages were checked by title and text-
 | ColorScheme | Flutter API | https://api.flutter.dev/flutter/material/ColorScheme-class.html | Flutter color roles and Material 3 surfaces | Verified API page. |
 | Testing Flutter apps | Flutter / guide | https://docs.flutter.dev/testing | Unit/widget/integration testing | Official source; check current version before use. |
 | Accessibility and internationalization | Flutter / guide | https://docs.flutter.dev/ui/accessibility-and-internationalization/accessibility | Flutter accessibility guidance | URL recorded; exact current page content not retrieved. |
-| UI design and styling accessibility | Flutter / guide | https://docs.flutter.dev/ui/accessibility/ui-design-and-styling | Large text, contrast, and tap-target recommendations; Flutter guidance distinguishes Android/iOS target guidance from W3C guidance | Verified 2026-10-25; page reflects Flutter 3.47. Recommendations are not WCAG conformance criteria. |
-| WCAG 2.2 target size minimum | W3C / accessibility standard | https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html | SC 2.5.8: 24x24 CSS-pixel minimum for pointer targets, with defined exceptions | Verified 2026-10-25. Apply scope, units, and exceptions from the normative standard; do not conflate with touch-target recommendations. |
-| Android accessibility guidance | Android / platform guide | https://developer.android.com/guide/topics/ui/accessibility/apps#touch-targets | Android recommends 48x48 dp touch targets | Verified 2026-10-25; platform recommendation, not WCAG criterion. |
-| Supported platforms | Flutter / reference | https://docs.flutter.dev/reference/supported-platforms | Flutter platform support | Official source; verify current platform/OS versions. |
-| Platform integration | Flutter / guide | https://docs.flutter.dev/platform-integration | Native platform integration and setup | Verified overview. |
+| UI design and styling accessibility | Flutter / guide | https://docs.flutter.dev/ui/accessibility/ui-design-and-styling | Large text, contrast, and mobile tap-target recommendations | Verified 2026-10-25; page reflects Flutter 3.47. Platform recommendations are not a substitute for checking any separate conformance requirement. |
+| Android accessibility guidance | Android / platform guide | https://developer.android.com/guide/topics/ui/accessibility/apps#touch-targets | Android recommends 48x48 dp touch targets | Verified 2026-10-25; platform recommendation. |
+| Android platform integration | Flutter / guide | https://docs.flutter.dev/platform-integration/android | Android mobile setup and integration | Verify current tooling and OS requirements. |
+| iOS platform integration | Flutter / guide | https://docs.flutter.dev/platform-integration/ios | iOS mobile setup and integration | Verify current tooling and OS requirements. |
 | Material/Cupertino package migration | Flutter / migration guide | https://docs.flutter.dev/release/breaking-changes/material-ui-and-cupertino-ui | Standalone `material_ui` and `cupertino_ui` package availability and migration context; contributions to the in-framework libraries were frozen starting in Flutter 3.44 | Verified 2026-10-25; Flutter 3.47 makes the standalone 1.0 packages available. Verify imports, package constraints, and APIs for the target SDK. |
 | M3 Expressive component migration checklist | Flutter / implementation checklist | https://github.com/flutter/flutter/blob/master/docs/ecosystem/material_ui/Material-3-Expressive-component-migration-checklist.md | Component-level M3E opt-in and migration workflow for `material_ui`; retains Material 3 as default | Verified 2026-10-25 through merged [Flutter PR #192519](https://github.com/flutter/flutter/pull/192519). This is implementation guidance for Flutter's package, not universal app-level normative guidance. |
 
+### Mobile adaptive and foldable sources checked 2026-11-03
+
+| Title | Publisher / category | URL | Supports | Status and limitations |
+|---|---|---|---|---|
+| Large screens | Flutter / mobile adaptive guide | https://docs.flutter.dev/ui/adaptive-responsive/large-screens | Flutter guidance on large-screen layouts, orientation, foldables, and app-space adaptation | Verified 2026-11-03; page reflects Flutter 3.47. It also covers web, desktop, and iPad; this repository uses only applicable mobile guidance. |
+| `MediaQueryData.displayFeatures` | Flutter API | https://api.flutter.dev/flutter/widgets/MediaQueryData/displayFeatures.html | Flutter display-feature bounds, types, and folding state | Verified 2026-11-03; API documentation says the list is populated only on Android. |
+| `DisplayFeatureSubScreen` | Flutter API | https://api.flutter.dev/flutter/widgets/DisplayFeatureSubScreen-class.html | Positioning a child to avoid a display feature that splits the screen | Verified 2026-11-03; a focused widget behavior, not a complete adaptive layout solution. Check the target SDK. |
+| Learn about foldables | Android / foldable design and developer guide | https://developer.android.com/develop/ui/compose/layouts/adaptive/foldables/learn-about-foldables | Foldable states/postures, continuity, display areas, and large-screen scenarios | Verified 2026-11-03; includes Compose implementation details that are not Flutter APIs. |
 
 ### Component API sources checked 2026-10-24
 
@@ -82,9 +89,9 @@ These issue-tracker references are implementation-status evidence, not normative
 | material_3_expressive | paadevelopments / community implementation | https://github.com/paadevelopments/material_3_expressive | Example Flutter implementation claims and package code | Page retrieved; non-normative and not official. |
 | m3_expressive | fabric-apps / community implementation | https://github.com/fabric-apps/m3_expressive | Example custom Flutter components | Page retrieved; non-normative and not official. |
 
-## Platform, accessibility, web, and testing
+## Mobile platforms, accessibility, and testing
 
-Use current official references for [Android](https://developer.android.com/design/ui), [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/), [Microsoft Fluent design](https://learn.microsoft.com/windows/apps/design/), [W3C WCAG](https://www.w3.org/TR/WCAG22/), and [Flutter platform integration](https://docs.flutter.dev/platform-integration). These were identified as authoritative starting points but their detailed claims were not individually verified in this review; consult the target platform and current version directly.
+Use current official references for [Android](https://developer.android.com/design/ui), [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/), and Flutter's [Android](https://docs.flutter.dev/platform-integration/android) and [iOS](https://docs.flutter.dev/platform-integration/ios) setup guides. These are starting points, not proof of app-level behavior; consult the target OS version and device guidance directly. Apply accessibility standards when required by the mobile product, and verify their scope independently of platform tap-target recommendations.
 
 ## Preserved starting URLs
 

@@ -10,6 +10,11 @@ https://github.com/fabric-apps/m3_expressive
 https://m3.material.io/
 https://docs.flutter.dev/ui/design/material
 https://docs.flutter.dev/ui/design
+https://docs.flutter.dev/ui/adaptive-responsive
+https://docs.flutter.dev/ui/adaptive-responsive/large-screens
+https://api.flutter.dev/flutter/widgets/MediaQueryData/displayFeatures.html
+https://api.flutter.dev/flutter/widgets/DisplayFeatureSubScreen-class.html
+https://developer.android.com/develop/ui/compose/layouts/adaptive/foldables/learn-about-foldables
 
 
 
@@ -33,7 +38,6 @@ https://m3.material.io/develop
 https://m3.material.io/develop/android/mdc-android
 https://m3.material.io/develop/android/jetpack-compose
 https://m3.material.io/develop/flutter
-https://m3.material.io/develop/web
 
 
 
@@ -50,9 +54,6 @@ https://m3.material.io/foundations/content-design/global-writing/overview
 https://m3.material.io/foundations/content-design/notifications
 https://m3.material.io/foundations/content-design/style-guide/ux-writing-best-practices
 https://m3.material.io/foundations/customization
-https://m3.material.io/foundations/watches/overview
-https://m3.material.io/foundations/xr/design/overview
-https://m3.material.io/foundations/xr/components/overview
 https://m3.material.io/foundations/design-tokens/overview
 https://m3.material.io/foundations/interaction/gestures
 https://m3.material.io/foundations/interaction/inputs

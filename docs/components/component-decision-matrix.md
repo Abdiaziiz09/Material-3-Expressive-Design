@@ -93,10 +93,12 @@ M3ESplitButton(
 | Back navigation | `Navigator.pop`, system back | — | E2 | Android: support predictive back gesture. iOS: support swipe-to-pop. |
 | Breadcrumb / step navigation | Compose custom | — | E4 | No stock widget. Build with `Row` + `TextButton`. |
 
-### Responsive navigation pattern
+### Mobile phone/tablet navigation pattern
+
+The tablet transition threshold is an app-specific decision, not an official Material breakpoint. Use a named project token and validate it against the supported phone/tablet form factors; do not copy a numeric threshold without evidence.
 
 ```dart
-// Use M3EAdaptiveScaffold to handle all three breakpoints automatically:
+// Use M3EAdaptiveScaffold for the reference app's phone/tablet navigation:
 M3EAdaptiveScaffold(
   currentIndex: _selectedIndex,
   onNavigationChanged: (i) => setState(() => _selectedIndex = i),
@@ -110,15 +112,16 @@ M3EAdaptiveScaffold(
 
 // Or manual LayoutBuilder approach:
 LayoutBuilder(builder: (context, constraints) {
-  final wide = constraints.maxWidth >= 720;
+  final useTabletNavigation =
+      constraints.maxWidth >= appResponsiveTokens.tabletNavigationBreakpoint;
   return Scaffold(
-    bottomNavigationBar: wide ? null : NavigationBar(
+    bottomNavigationBar: useTabletNavigation ? null : NavigationBar(
       selectedIndex: _selectedIndex,
       onDestinationSelected: (i) => setState(() => _selectedIndex = i),
       destinations: _destinations,
     ),
     body: Row(children: [
-      if (wide) NavigationRail(
+      if (useTabletNavigation) NavigationRail(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (i) => setState(() => _selectedIndex = i),
         destinations: _railDestinations,
@@ -287,7 +290,7 @@ These requirements apply to every widget in the matrix above without exception:
 
 | Requirement | Implementation |
 |---|---|
-| Touch target | Follow the relevant platform guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS). This is distinct from WCAG 2.2 SC 2.5.8's 24×24 CSS-pixel minimum for pointer targets; see [accessibility guidance](../foundations/accessibility.md). |
+| Touch target | Follow the relevant platform guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS); see [accessibility guidance](../foundations/accessibility.md). Verify any separate conformance requirements that apply to the mobile app. |
 | Semantic label on icon-only controls | `IconButton(tooltip: ...)` or `Semantics(label: ..., child: ...)` |
 | Text scaling | Never use fixed-height containers for text. Use `ConstrainedBox(minHeight:)` |
 | Contrast | Use semantic `ColorScheme` pairs; verify custom overrides with a contrast checker |

@@ -83,7 +83,7 @@ The current component ledger is predominantly **E1 + repository-reported E2/test
 5. **`SegmentedButton` must not be treated as a one-to-one M3E connected button group.** The official Flutter proposal describes a distinction and new capabilities.
 6. **The source catalog is honest but shallow:** current component evidence is mostly metadata-level. It cannot currently support exact design values or complete state claims.
 7. **The SDK boundary is important:** repository's snapshot records Flutter 3.47.7 and an in-framework source path, while official Flutter docs now describe standalone `material_ui`/`cupertino_ui` packages. Future evidence must record which package/API path was actually tested.
-8. **Testing evidence is fixture-level and incomplete.** Golden files use Ahem test font and do not prove actual typography, browser/device parity, native assistive technology, or M3E conformance (as the ledger itself acknowledges).
+8. **Testing evidence is fixture-level and incomplete.** Golden files use Ahem test font and do not prove actual typography, Android/iOS device rendering, native assistive technology, or M3E conformance (as the ledger itself acknowledges).
 
 ## Deliverables in this audit pack
 

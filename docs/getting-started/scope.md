@@ -12,7 +12,7 @@ Flutter's Material library is available through the legacy `package:flutter/mate
 
 `ThemeData.useMaterial3` selects Flutter's Material 3 styling behavior. `ThemeData`, `ColorScheme`, `TextTheme`, and per-component theme data allow configuration. These APIs do not certify that M3 Expressive-only component flexibility, motion, shape morphing, or Android behavior is present. Flutter's M3 Expressive component migration work is incremental: the official `material_ui` checklist describes component-level opt-in while retaining Material 3 defaults. This is Flutter package implementation guidance, not a universal requirement that every app expose an expressive theme switch.
 
-The reference app's dependency and import examples are tied to that app's declared versions. Agents must inspect the target app's `pubspec.yaml`, lockfile, and Flutter version rather than copying a package constraint from this guide.
+The scope of this guide is Flutter mobile apps for Android and iOS, including phones, tablets, and foldables. Web and desktop apps are out of scope. The reference app's dependency and import examples are tied to that app's declared versions. Agents must inspect the target app's `pubspec.yaml`, lockfile, and Flutter version rather than copying a package constraint from this guide.
 
 Classify implementation needs:
 
@@ -22,7 +22,7 @@ Classify implementation needs:
 - **Platform-specific:** use a supported OS API/plugin or conditional integration; document fallback behavior.
 - **Unverified:** source or API evidence is insufficient. Do not assert support.
 
-Android's system UI and platform-level Material implementations are not identical to Flutter's cross-platform widget rendering. On iOS, web, Windows, macOS, and Linux, preserve the product's design language while respecting platform input, window, accessibility, and integration conventions.
+Android's system UI and platform-level Material implementations are not identical to Flutter's widget rendering. On Android and iOS, preserve the shared product design while respecting each platform's navigation, safe areas, system UI, accessibility, and integration conventions. Tablet, foldable, orientation, and split-screen layouts remain in scope when they are part of the mobile app.
 
 ## Evidence labels
 

@@ -4,11 +4,11 @@
 
 1. Current, relevant official Material component/foundation guidance for design intent.
 2. Current Flutter API documentation/source for Flutter behavior and API availability.
-3. Official target-platform and accessibility documentation for OS/browser behavior.
+3. Official Android/iOS and accessibility documentation for mobile OS behavior.
 4. Reputable implementation references for examples, clearly marked non-normative.
 5. Explicit project requirements and tested local decisions where upstream sources do not prescribe an answer.
 
-This order is scoped, not absolute: platform behavior should be resolved by the platform owner, and a versioned API reference by Flutter.
+This order is scoped, not absolute: Android or Apple documentation is authoritative for its mobile OS behavior, and Flutter's versioned API reference is authoritative for Flutter behavior.
 
 ## Resolve ambiguity
 

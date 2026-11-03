@@ -1,6 +1,6 @@
 # AI coding agent quick-start: implementing M3E in Flutter
 
-This page is the **agent-neutral entry point** for any AI coding assistant assigned to build or modify a Flutter application using Material 3 Expressive. It does not depend on a particular model, vendor, editor, agent mode, or prompt-file format. Follow the repository's canonical documentation and the target project's actual SDK/package versions; do not assume that a vendor-specific instruction file is available.
+This page is the **agent-neutral entry point** for any AI coding assistant assigned to build or modify an Android or iOS Flutter mobile app using Material 3 Expressive. Phone, tablet, and foldable layouts are in scope. Web and desktop apps are out of scope. The instructions do not depend on a particular model, vendor, editor, agent mode, or prompt-file format. Follow the repository's canonical documentation and the target project's actual SDK/package versions; do not assume that a vendor-specific instruction file is available.
 
 ---
 
@@ -133,7 +133,7 @@ Container(color: theme.colorScheme.primary)
 
 ### Rule 3: Preserve usable touch targets
 
-Follow the target platform's tap-target guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS). This is platform guidance, not the WCAG 2.2 SC 2.5.8 minimum; see [touch-target guidance](../foundations/accessibility.md) and apply the criteria relevant to the target platform. The token-based 48×48 example below is a project choice and should not be treated as universal across platforms.
+Follow the target platform's tap-target guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS); see [touch-target guidance](../foundations/accessibility.md). The token-based 48×48 example below is a project choice and should not be treated as universal across platforms. Check any separate accessibility-conformance requirements that apply to the mobile app.
 ```dart
 // WRONG
 GestureDetector(child: SizedBox(width: 28, height: 28, child: Icon(Icons.close)))

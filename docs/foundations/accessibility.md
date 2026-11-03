@@ -1,11 +1,11 @@
 # Accessibility
 
-Accessibility is part of the interface specification, not a final polish pass. Follow Material's [building for all user needs](https://m3.material.io/foundations/building-for-all/user-needs) guidance, Flutter's [accessibility documentation](https://docs.flutter.dev/ui/accessibility-and-internationalization/accessibility), and applicable WCAG criteria for web content.
+Accessibility is part of the interface specification, not a final polish pass. Follow Material's [building for all user needs](https://m3.material.io/foundations/building-for-all/user-needs) guidance, Flutter's [accessibility documentation](https://docs.flutter.dev/ui/accessibility-and-internationalization/accessibility), and any accessibility standards applicable to the mobile app.
 
 - Use semantic controls and meaningful labels; test with platform screen readers.
 - Preserve text scaling and avoid truncating essential information.
 - Verify foreground/background contrast, including custom and dynamic colors.
-- Make focus visible and keyboard navigation complete on web and desktop.
+- Make focus visible and keyboard navigation complete where supported, including when users connect an external keyboard.
 - Support touch, pointer, keyboard, and switch/assistive input as relevant.
 - Do not rely only on color, motion, or shape to convey state.
 - Ensure dialogs, menus, sheets, and validation errors announce and manage focus correctly.
@@ -14,7 +14,7 @@ Accessibility is part of the interface specification, not a final polish pass. F
 
 Flutter's accessibility guidance recommends sufficiently large tap targets and cites platform recommendations of at least 48x48 dp for Android and 44x44 pt for iOS. Use the applicable target-platform guidance rather than treating one platform's units as universal. Verify the effective hit region, including when the visible icon or shape is smaller.
 
-Do not label 48x48 dp as the WCAG minimum. WCAG 2.2 Success Criterion 2.5.8 (Level AA) specifies a minimum target size of 24x24 CSS pixels for pointer inputs, subject to its stated exceptions, including spacing and equivalent-control exceptions. WCAG and platform touch recommendations use different contexts and units; apply the relevant criteria to the actual target platform and product.
+Do not treat a platform touch-target recommendation as proof of standards conformance. Platform recommendations and any applicable conformance criteria have different scopes; verify the exact requirements for the mobile product rather than treating one dimension as universal.
 
 ## Large text testing
 

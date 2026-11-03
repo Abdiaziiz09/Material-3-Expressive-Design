@@ -1,14 +1,11 @@
-# Platform guidance
+# Mobile platform guidance
 
-Flutter can target Android, iOS, web, Windows, macOS, and Linux, but build prerequisites, OS integration, input, accessibility, and rendering differ. These guides do not claim identical Material behavior on every target.
+This repository covers Flutter mobile apps on Android and iOS. Phone, tablet, foldable, orientation, and mobile multi-window behavior may differ by OS version and device.
 
 | Target | Guide |
 |---|---|
-| Android | [Android](android.md) |
-| iOS | [iOS](ios.md) |
-| Web | [Web](web.md) |
-| Windows | [Windows](windows.md) |
-| macOS | [macOS](macos.md) |
-| Linux | [Linux](linux.md) |
+| Android mobile | [Android](android.md) |
+| Android foldables | [Foldables](foldables.md) |
+| iOS mobile | [iOS](ios.md) |
 
-Start with Flutter's [supported platform list](https://docs.flutter.dev/reference/supported-platforms) and [platform integration guidance](https://docs.flutter.dev/platform-integration). Validate native integration and assistive technology on actual target environments.
+Follow Flutter's [Android setup](https://docs.flutter.dev/platform-integration/android) or [iOS setup](https://docs.flutter.dev/platform-integration/ios), as applicable. Validate native integration and assistive technology on actual supported devices and OS versions.

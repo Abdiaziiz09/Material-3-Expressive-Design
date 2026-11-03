@@ -4,7 +4,7 @@ Recipes are patterns, not official templates. Any screen-specific spacing, break
 
 ## Settings screen
 
-Use a page heading and grouped settings sections. Choose controls by semantics: switch for an immediate on/off preference, checkbox for selection in a form, and a navigation row when the item opens a detail screen. Provide concise labels, supporting text when needed, and visible focus. On wide windows, consider a persistent category navigation plus a constrained detail pane; select this based on task and space rather than a universal threshold. Verify RTL, text scaling, keyboard navigation, and screen-reader labels.
+Use a page heading and grouped settings sections. Choose controls by semantics: switch for an immediate on/off preference, checkbox for selection in a form, and a navigation row when the item opens a detail screen. Provide concise labels, supporting text when needed, and visible focus. On tablets, consider a persistent category navigation plus a detail pane when the task benefits from a two-pane layout; select this based on task and available space rather than a universal threshold. Verify RTL, text scaling, external-keyboard navigation where supported, and screen-reader labels.
 
 See also the [expressive screen recipes](expressive-screen-recipes.md) for onboarding, profile, search, feed, chat, notifications, and account settings patterns.
 
@@ -18,11 +18,7 @@ Use labelled `TextFormField` controls, appropriate keyboard types, inline and an
 
 ## List-detail and navigation shell
 
-Use a list and detail composition when selection context matters; adapt from single-pane navigation to side-by-side panes when space supports it. Use Flutter's `NavigationBar`, `NavigationRail`, or `NavigationDrawer` only when the task and viewport make that pattern appropriate. Keep selection semantics and back behavior coherent. No breakpoint is prescribed here.
-
-## Desktop and web application
-
-Design for resizable windows, pointer and keyboard input, hover/focus, shortcuts where appropriate, scrollbars, and browser/window navigation. Avoid phone-only bottom sheets and bottom navigation where they impede desktop workflows. Validate browser zoom, text scaling, keyboard-only operation, and window resize boundaries.
+Use a list and detail composition when selection context matters; adapt from single-pane navigation on phones to side-by-side panes on tablets when space supports it. Use Flutter's `NavigationBar`, `NavigationRail`, or `NavigationDrawer` only when the mobile task and available screen space make that pattern appropriate. Keep selection semantics and back behavior coherent. No breakpoint is prescribed here.
 
 ## Light/dark theme
 

@@ -1,7 +1,7 @@
 # Implementation workflow for coding agents
 
 1. **Read instructions:** root `AGENTS.md`, scope, support matrix, and relevant component/foundation pages.
-2. **Establish target:** Flutter version, platforms, viewport/window sizes, input methods, localization/RTL, accessibility needs, and existing architecture.
+2. **Establish target:** Android/iOS versions, phone/tablet/foldable form factors, Flutter version, orientation and available screen constraints, touch and any supported external input, localization/RTL, accessibility needs, and existing architecture.
 3. **Extract requirements:** list official design requirements, Flutter facts, application requirements, and unknowns separately. Link sources.
 4. **Check capability:** verify candidate widget constructors and properties in API docs for the selected SDK. Classify each requirement built-in, configurable, custom, platform-specific, or unverified.
    - For Flutter M3 Expressive work in the standalone `material_ui` package, consult Flutter's [component migration checklist](https://github.com/flutter/flutter/blob/master/docs/ecosystem/material_ui/Material-3-Expressive-component-migration-checklist.md). It describes incremental, component-level opt-in while keeping Material 3 as the default; verify the actual target package version and do not infer a global expressive theme or app requirement from the checklist.

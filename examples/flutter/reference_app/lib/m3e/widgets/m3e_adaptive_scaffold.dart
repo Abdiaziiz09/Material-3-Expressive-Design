@@ -20,8 +20,8 @@ class M3EDestination {
   final String? tooltip;
 }
 
-/// A production-grade adaptive scaffold using [LayoutBuilder] to seamlessly
-/// transition across Mobile, Web, macOS, Windows, and Linux.
+/// An adaptive mobile scaffold using [LayoutBuilder] to transition between
+/// phone and tablet navigation layouts.
 class M3EAdaptiveScaffold extends StatelessWidget {
   const M3EAdaptiveScaffold({
     super.key,
@@ -101,7 +101,7 @@ class M3EAdaptiveScaffold extends StatelessWidget {
           );
         }
 
-        // Expanded Desktop Layout (macOS, Windows, Linux, Web)
+        // Expanded tablet layout.
         return Scaffold(
           appBar: appBar,
           floatingActionButton: floatingActionButton,

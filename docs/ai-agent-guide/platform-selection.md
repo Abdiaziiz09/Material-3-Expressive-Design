@@ -1,14 +1,12 @@
 # Platform selection
 
-Ask which products and inputs are in scope before choosing components. A shared Flutter codebase does not require an identical shell on every target.
+This guide covers Android and iOS mobile apps only. Identify the supported phone, tablet, and foldable form factors before choosing components or navigation.
 
-| Context | Consider |
+| Mobile target | Consider |
 |---|---|
-| Android touch | system bars, back behavior, IME, display scaling, TalkBack, dynamic color only where supported |
-| iOS touch/tablet | safe areas, platform navigation, VoiceOver, text scaling, multitasking/resizing |
-| Browser | keyboard/focus, browser history, zoom, viewport resizing, web semantics and screen readers |
-| Windows desktop | resize, mouse/keyboard, focus/shortcuts, DPI, window controls |
-| macOS desktop | resize, menu/keyboard conventions, VoiceOver, window chrome |
-| Linux desktop | distribution/toolkit variability, keyboard/focus, packaging, portal/plugin capabilities |
+| Android phone | system bars and insets, back behavior, IME, display scaling, TalkBack, dynamic color only where supported |
+| Android tablet/foldable | posture and hinge, orientation, split-screen/multi-window, navigation changes, large text; see [foldable guidance](../platforms/foldables.md) |
+| iPhone | safe areas, platform navigation, VoiceOver, Dynamic Type, keyboard and system dialogs |
+| iPad | safe areas, VoiceOver, Dynamic Type, orientation, multitasking and window resizing |
 
-Treat this as a checklist, not a promise of feature support. Verify using Flutter's current [supported platform documentation](https://docs.flutter.dev/reference/supported-platforms) and each platform's guide in this repository.
+Treat this as a checklist, not a promise of feature support. Verify with Flutter's current [Android](https://docs.flutter.dev/platform-integration/android) and [iOS](https://docs.flutter.dev/platform-integration/ios) setup guides and the platform documentation.

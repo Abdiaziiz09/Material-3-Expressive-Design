@@ -9,7 +9,7 @@ Extend Flutter only when the component requirements cannot be met by verified bu
 1. **Identify the Visual and Interaction Gap**: Verify that the required M3E component behavior is not provided by the baseline Flutter SDK.
 2. **Compose Standard Primitives**: Prefer combining existing Flutter widgets (`Material`, `InkWell`, `Semantics`, `LayoutBuilder`, and spring animation primitives) rather than forking or copying framework internals.
 3. **Bind to Semantic Tokens**: Every component must source its visual parameters from `ColorScheme`, `context.m3e.spacing`, and `context.m3e.shapes`. Zero magic numbers are permitted.
-4. **Preserve Accessibility**: Follow the relevant platform touch-target guidance (Flutter's guide cites 48x48 dp for Android and 44x44 pt for iOS), preserve text at large platform scale settings, and support bidirectional layout (RTL). Do not conflate platform recommendations with WCAG 2.2 target-size criteria; see [accessibility guidance](../foundations/accessibility.md).
+4. **Preserve Accessibility**: Follow the relevant platform touch-target guidance (Flutter's guide cites 48x48 dp for Android and 44x44 pt for iOS), preserve text at large platform scale settings, and support bidirectional layout (RTL). Verify any separate accessibility-conformance requirements that apply to the mobile app; see [accessibility guidance](../foundations/accessibility.md).
 5. **Spring Physics**: Use `M3EMotion.createSpatialSpring()` and `M3EMotion.createEffectSpring()` for state transitions instead of linear or ease-in-out curves.
 
 ---
@@ -76,7 +76,7 @@ M3EAppBar(
 A segmented group of action buttons that share a continuous outer perimeter and inner dividers. It provides three discrete density levels:
 - `compact`: Dense toolbars and compact viewports (height: 36dp).
 - `standard`: Standard touch density (height: 44dp).
-- `comfortable`: Expanded layout for desktop and tablet screens (height: 52dp).
+- `comfortable`: Expanded layout for tablets (height: 52dp).
 
 ```dart
 import 'package:material_ui/material_ui.dart';
@@ -125,7 +125,7 @@ M3ESplitButton(
 A responsive layout container using `LayoutBuilder` that automatically transitions between navigation patterns across screen breakpoints:
 - **Mobile (< 720dp)**: Bottom `NavigationBar`.
 - **Tablet (720dp - 1024dp)**: Lateral `NavigationRail`.
-- **Desktop (> 1024dp)**: Expanded `NavigationDrawer`.
+- **Expanded mobile/tablet width (> 1024dp)**: `NavigationDrawer`. The breakpoint is a project-defined layout choice, not a universal Material requirement.
 
 ```dart
 import 'package:material_ui/material_ui.dart';

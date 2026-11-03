@@ -17,7 +17,7 @@ Use the repository-root `AGENTS.md` before implementation. This guide is the ope
 - [M3E quick-start](m3e-quick-start.md) — complete agent workflow with code patterns
 - [Implementation workflow](implementation-workflow.md) — step-by-step process checklist
 - [Design decision rules](design-decision-rules.md) — authority order and conflict resolution
-- [Platform selection](platform-selection.md) — Android, iOS, desktop considerations
+- [Mobile platform selection](platform-selection.md) — Android and iOS phones, tablets, and foldables
 - [Validation checklist](validation-checklist.md) — what to verify before submitting
 - [Anti-patterns](anti-patterns.md) — what to avoid
 
