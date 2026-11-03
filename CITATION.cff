@@ -6,7 +6,7 @@ version: "0.1.0"
 date-released: "2026-10-23"
 license: MIT
 abstract: "An independent, source-traceable implementation guide for Material 3 Expressive-informed Flutter interfaces."
-repository-code: "https://github.com/OWNER/REPOSITORY"
+repository-code: "https://github.com/Abdiaziiz09/Material-3-Expressive-Design"
 keywords:
   - Material Design
   - Material 3 Expressive
