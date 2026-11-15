@@ -55,6 +55,8 @@ Treat this as a scalable example, not a required scaffold. Avoid creating empty 
 - Do not invent `m3d.design`, `context.m3e`, component classes, token accessors, or imports. They are available only if their implementations exist in the target app or a declared dependency.
 - Do not present a baseline Material widget as M3E merely because `useMaterial3` is enabled. Also do not ban built-in widgets without component-specific evidence.
 - Avoid unexplained layout, radius, or duration literals. Prefer the app's named tokens; label any new application-specific value and centralize it when it is genuinely shared.
+- Choose motion for the specific widget, user action, and state/property change. Do not apply a fixed list of springs, ripples, morphs, scales, tickers, or route animations to every app. Decide whether the change is spatial or an effect, whether motion improves the task, and whether it is prominent or frequently repeated; see [motion guidance](foundations.md#motion).
+- Treat the AndroidX Compose `MotionScheme` as a design reference only. It is not a Flutter API; use the target Flutter SDK and the app's own motion conventions.
 - Support text scaling, RTL, semantics, focus, platform navigation, safe areas, and reduced motion where applicable.
 - Prefer focused widgets and clear names. Use `const` when it improves correctness/performance and the constructor permits it; do not add keys without a state or identity need.
 - Use typed callbacks and errors; avoid `dynamic`, broad catches, silent fallbacks, and unnecessary casts.

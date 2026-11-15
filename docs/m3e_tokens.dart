@@ -7,7 +7,6 @@ class M3ETokens {
 
   final spacing = const M3ESpacing();
   final shapes = const M3EShapes();
-  final motion = const M3EMotion();
 }
 
 extension M3EBuildContext on BuildContext {
@@ -67,16 +66,4 @@ class M3EShapes {
   BorderRadius get borderLarge => BorderRadius.circular(radiusLarge);
   BorderRadius get borderExtraLarge => BorderRadius.circular(radiusExtraLarge);
   BorderRadius get borderFull => BorderRadius.circular(radiusFull);
-}
-
-class M3EMotion {
-  const M3EMotion();
-
-  Duration get durationFast => const Duration(milliseconds: 150);
-  Duration get durationMedium => const Duration(milliseconds: 300);
-  Duration get durationSlow => const Duration(milliseconds: 500);
-
-  Curve get curveSpatialOvershoot => Curves.easeOutBack;
-  Curve get curveContainerMorph => Curves.fastOutSlowIn;
-  Curve get curveEffectFade => Curves.easeOutCubic;
 }

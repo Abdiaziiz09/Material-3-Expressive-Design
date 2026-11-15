@@ -52,10 +52,34 @@ LayoutBuilder(
 
 ## Motion
 
-- Use motion when it communicates state, feedback, or spatial relationships and the applicable source supports it.
-- The optional token sample has example durations and curves only. This repository does not prescribe universal motion tokens or implement spring simulations.
-- Respect operating-system reduced-motion settings. Preserve an understandable end state when nonessential animation is removed.
-- Dispose animation controllers, support interruption, and test rapid repeated input.
+Motion is selected for the widget, action, and state change being implemented. Do not treat spring, ripple, shape morphing, scale, or number-ticker animation as a required bundle for every app or component. Add motion only when it improves feedback, continuity, hierarchy, or comprehension.
+
+### Select motion by intent
+
+1. Identify the widget's role, the user action or state change, and what the user needs to understand.
+2. Classify the property being animated:
+   - **Effects:** color, opacity, or other changes that do not alter the component's shape or bounds.
+   - **Spatial:** position, size, bounds, or shape changes.
+3. Consider prominence and repetition. A prominent action or meaningful shared transition may justify more expressive motion; a frequently repeated utility control usually benefits from restrained, quick feedback.
+4. Choose the simplest Flutter animation that communicates the change. Use existing Material control feedback when it already meets the need.
+5. Verify the actual design source, target SDK behavior, interruption handling, and reduced-motion behavior. Treat unsourced timings and curves as application choices.
+
+AndroidX Compose Material 3 Expressive documents this intent-sensitive approach in its [MotionScheme API](https://developer.android.com/reference/kotlin/androidx/compose/material3/MotionScheme): it distinguishes spatial from effects specs and describes expressive motion for prominent UI/hero interactions versus standard motion for utilitarian and recurring interactions. This is **Compose-specific implementation guidance**, not a Flutter API or a universal Flutter prescription; use it as a decision model, not as Kotlin code to copy into Flutter.
+
+| Widget/task context | Motion that may fit | Avoid assuming |
+|---|---|---|
+| Repeated button, switch, or selection control | Existing Material pressed/selected feedback; restrained state change | Every tap needs a spring or scale bounce |
+| Dragged or flung object | Velocity-aware physics when the object should continue or settle naturally | A visibly oscillating spring is always desirable |
+| Content or control changes position, size, or shape | Spatial transition when it helps users follow continuity | Shape morphing is supported for every pair of shapes |
+| Navigation to the same content in a new view | Shared-element transition when it clarifies continuity | Every route needs a `Hero` transition |
+| Item enters or leaves a list | Insert/remove animation when it preserves orientation | Every rebuild should animate the entire list |
+| Important value changes | Number/count transition only when it improves understanding | Every number should roll or tick |
+
+These are examples for making a decision, not a component-to-animation mandate. An application's motion choices should remain coherent while allowing different widgets and tasks to use different patterns.
+
+The optional token example no longer defines generic durations or curves: this repository has no source-backed universal motion token set. Use the target app's verified motion system or choose and document app-specific values for the actual transition.
+
+Respect operating-system reduced-motion settings and preserve an understandable end state when nonessential animation is reduced or skipped. Dispose animation controllers, support interruption, and test rapid repeated input.
 
 ## Icons
 

@@ -43,9 +43,33 @@ This is a Flutter Material 3 starting point, not an M3E compliance recipe or exa
 
 ## App-local token example
 
-The optional [token sample](m3e_tokens.dart) demonstrates a small `context.m3e` extension. It is code to copy into an app, not a package dependency or API available automatically in Flutter. Its values are project choices; they are not a complete or official Material token system. Do not write code using this extension unless you add its implementation to the target app.
+The optional [token sample](m3e_tokens.dart) demonstrates app-local spacing and shape values through a small `context.m3e` extension. It is code to copy into an app, not a package dependency or API available automatically in Flutter. Its values are project choices; they are not a complete or official Material token system. It intentionally provides no generic motion-duration or curve tokens: choose motion for the actual widget and transition as described in [Foundations](foundations.md#motion). Do not write code using this extension unless you add its implementation to the target app.
 
 Prefer the target app's existing design tokens. If no token system exists, use a small, named app-local set only when repeated values justify it. Do not invent imports such as `m3d.design` or pretend the sample is already installed.
+
+## Choosing an animation API
+
+Select an animation API after defining the interaction; do not start by applying the same effect to every widget.
+
+| Need | Flutter starting point | Fit and limits |
+|---|---|---|
+| Animate a property when its target changes | `AnimatedContainer`, `AnimatedScale`, or another implicit animation | Good for simple state-driven property changes; the animated container does not animate its child or descendants |
+| Replace one child with another | `AnimatedSwitcher` | Supports custom transitions; use distinct keys when a changed child must be treated as a new child |
+| Show the same visual element continuing between routes | `Hero` | Use matching tags and compatible layouts; reserve for meaningful continuity |
+| Insert or remove list content | `AnimatedList` or `AnimatedGrid` | Use for structural changes, not as an automatic animation for every list rebuild |
+| Drive a gesture-linked or physics-based movement | `AnimationController` with `SpringSimulation` or the appropriate simulation | Use when velocity/physical settling is relevant; manage controller lifecycle and interruption |
+| Animate a numeric value | `TweenAnimationBuilder` or a custom transition | Number roll-up is a custom UI pattern, not an asserted M3E component or built-in Material widget |
+
+These APIs are alternatives, not a checklist. Prefer the least complex mechanism that communicates the particular state change. A Material component may already provide appropriate interaction feedback; avoid wrapping it in duplicate ripple or scale behavior.
+
+Material 3 Expressive's AndroidX Compose [MotionScheme](https://developer.android.com/reference/kotlin/androidx/compose/material3/MotionScheme) separates spatial changes from effects and distinguishes expressive prominent/hero interactions from standard utilitarian/repeated ones. That API is Kotlin/Compose-specific. Flutter apps should use Flutter APIs and target-app conventions, applying the same contextual reasoning without importing or pretending to have Compose's `MotionScheme`.
+
+### Motion accessibility and lifecycle
+
+- Flutter's [`MediaQueryData.disableAnimations`](https://api.flutter.dev/flutter/widgets/MediaQueryData/disableAnimations.html) describes Android's remove-animations request. iOS reduced motion is exposed separately through [`AccessibilityFeatures.reduceMotion`](https://api.flutter.dev/flutter/dart-ui/AccessibilityFeatures/reduceMotion.html).
+- `AnimationController` adapts to the framework's `disableAnimations` signal. Since iOS exposes reduced motion separately, custom motion must also account for the target platform's `reduceMotion` accessibility feature where applicable.
+- Dispose controllers and listeners; verify rapid repeated input, cancellation, route changes, and widget removal.
+- Animated numbers must preserve a correct final value and useful semantics; do not make screen readers announce every intermediate frame.
 
 ## Architecture
 

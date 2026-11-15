@@ -17,6 +17,7 @@ Prefer the most specific applicable source. Record disagreements rather than sil
 ### Material
 
 - [Material 3 Expressive overview](https://m3.material.io/blog/building-with-m3-expressive)
+- [Material Motion overview](https://m3.material.io/styles/motion/overview/how-it-works) — accessible page metadata describes motion as a way to make UI expressive and easy to use; detailed page content could not be fully retrieved in this review.
 - [Color roles](https://m3.material.io/styles/color/roles)
 - [Typography](https://m3.material.io/styles/typography/overview)
 - [Shape principles](https://m3.material.io/styles/shape/overview-principles)
@@ -33,6 +34,13 @@ Prefer the most specific applicable source. Record disagreements rather than sil
 - [Testing](https://docs.flutter.dev/testing)
 - [Material/Cupertino package migration](https://docs.flutter.dev/release/breaking-changes/material-ui-and-cupertino-ui)
 - [M3 Expressive component migration checklist](https://github.com/flutter/flutter/blob/master/docs/ecosystem/material_ui/Material-3-Expressive-component-migration-checklist.md) — Flutter implementation guidance, not a universal app-level M3E requirement.
+- [Animation guide](https://docs.flutter.dev/ui/animations) and [physics simulation recipe](https://docs.flutter.dev/cookbook/animation/physics-simulation)
+
+### AndroidX Compose implementation evidence (reviewed 2026-11-15)
+
+- [Material 3 Compose guide](https://developer.android.com/develop/ui/compose/designsystems/material3) describes M3 Expressive as including updates to motion among other design areas.
+- [AndroidX Compose `MotionScheme` API](https://developer.android.com/reference/kotlin/androidx/compose/material3/MotionScheme) describes a harmonious scheme for components, distinguishes spatial specs (shape/bounds changes) from effects specs (such as color), and documents expressive motion for prominent/hero interactions versus standard motion for utilitarian/repeated interactions. This is evidence for the Compose implementation and a useful decision model; it does not establish a Flutter API or exact Flutter motion values.
+- Flutter API references used for contextual examples: [`SpringSimulation`](https://api.flutter.dev/flutter/physics/SpringSimulation-class.html), [`AnimationController.fling`](https://api.flutter.dev/flutter/animation/AnimationController/fling.html), [`InkWell`](https://api.flutter.dev/flutter/material/InkWell-class.html), [`InkResponse`](https://api.flutter.dev/flutter/material/InkResponse-class.html), [`Material`](https://api.flutter.dev/flutter/material/Material-class.html), [`Hero`](https://api.flutter.dev/flutter/widgets/Hero-class.html), [`AnimatedList`](https://api.flutter.dev/flutter/widgets/AnimatedList-class.html), [`AnimatedSwitcher`](https://api.flutter.dev/flutter/widgets/AnimatedSwitcher-class.html), [`AnimatedContainer`](https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html), and [`TweenAnimationBuilder`](https://api.flutter.dev/flutter/widgets/TweenAnimationBuilder-class.html).
 
 ### Platforms
 
