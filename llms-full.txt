@@ -1,28 +1,26 @@
 # Consolidated agent reference
 
-This maintained entry file points to canonical documentation; it is intentionally not a copied snapshot. A copied full-document bundle would silently become stale. Use the repository tree or build the MkDocs site to retrieve complete content.
+This file is an index, not a copied documentation bundle. Read the linked canonical pages in full; do not assume that this file alone contains every design requirement.
 
-## Essential rules
+## Required reading
 
-- M3 Expressive is an evolution and extension of Material 3, not an inference that every M3 component has an expressive variant.
-- Flutter's Material 3 support and `useMaterial3` do not establish complete M3 Expressive behavior.
-- Use authoritative source evidence; distinguish Material guidance, Flutter API facts, and local implementation decisions.
-- Do not invent values or report untested support/compliance.
-- Implement responsive and accessible behavior for actual target platforms and input types.
+- `AGENTS.md` — repository-wide agent routing and constraints
+- `docs/overview.md` — scope and terminology
+- `docs/agent-guide.md` — workflow and code-quality rules
+- `ai-rules-project-structure.md` — adaptable Flutter project structure
 
-## Canonical pages
+## Task references
 
-- Scope: `docs/getting-started/scope.md`
-- Foundation index: `docs/foundations/index.md`
-- Component index: `docs/components/index.md`
-- Flutter implementation: `docs/flutter/index.md`
-- Android and iOS mobile platform guidance: `docs/platforms/index.md`
-- Source catalog: `docs/reference/official-sources.md`
-- Support matrix: `docs/reference/support-matrix.md`
-- Component verification ledger: `docs/reference/component-verification-ledger.md`
-- Phase 0/1 audit and 38-entry inventory: `docs/reference/m3e-phase0-1-audit.md`, `docs/reference/m3e-master-component-inventory.csv`, `docs/reference/m3e-master-component-inventory.json`, `docs/reference/m3e-source-evidence-ledger.csv`
-- Agent workflow and checklist: `docs/ai-agent-guide/implementation-workflow.md`, `docs/ai-agent-guide/validation-checklist.md`
-- Agent-neutral quick-start and decision rules: `docs/ai-agent-guide/m3e-quick-start.md`, `docs/ai-agent-guide/design-decision-rules.md`
-- Full machine-facing index: `llms.txt`
+- `docs/foundations.md` — color, typography, shape, elevation, spacing, motion, icons, accessibility, responsive design
+- `docs/components.md` — component selection and mappings
+- `docs/flutter.md` — SDK/dependency verification, theming, architecture, errors, tests
+- `docs/platforms.md` — Android, iOS, tablets, foldables, and device validation
+- `docs/evidence.md` — primary sources, limits, and historical research data
 
-Do not manually duplicate these pages into this file. Update the canonical documents and this concise index together as needed.
+## Non-negotiable distinctions
+
+- Material design intent, Flutter API behavior, platform behavior, and application choices are different kinds of evidence.
+- `ThemeData.useMaterial3: true` does not establish full M3 Expressive behavior.
+- Flutter's baseline widgets may be suitable when verified against the requirement; neither blanket bans nor assumed parity are justified.
+- Do not invent dependencies or APIs such as `m3d.design` and `context.m3e`. The optional token snippet must be copied into an app before use.
+- Historical inventory, API, and test records do not validate the current target application.

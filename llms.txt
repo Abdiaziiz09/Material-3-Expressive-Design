@@ -1,21 +1,25 @@
-# Material 3 Expressive for Flutter
+# Material 3 Expressive for Flutter — AI entry point
 
-Independent, source-traceable documentation. Not an official Google specification and not a compliance guarantee.
+Independent documentation, not an official specification or runtime package.
 
-Start with:
-- [Scope and terminology](docs/getting-started/scope.md)
-- [Support matrix](docs/reference/support-matrix.md)
-- [Agent-neutral M3E quick-start](docs/ai-agent-guide/m3e-quick-start.md)
-- [Agent workflow](docs/ai-agent-guide/implementation-workflow.md)
-- [Design decision rules](docs/ai-agent-guide/design-decision-rules.md)
-- [Foundations](docs/foundations/index.md)
-- [Component catalog](docs/components/index.md)
-- [Flutter guide](docs/flutter/index.md)
-- [Android and iOS mobile guides](docs/platforms/index.md)
-- [Source catalog](docs/reference/official-sources.md)
-- [Phase 0/1 audit and 38-entry component inventory](docs/reference/m3e-phase0-1-audit.md)
-- [Component inventory CSV](docs/reference/m3e-master-component-inventory.csv)
-- [Component inventory JSON](docs/reference/m3e-master-component-inventory.json)
-- [Source-evidence ledger CSV](docs/reference/m3e-source-evidence-ledger.csv)
+Read first:
+- `AGENTS.md`
+- `docs/overview.md`
+- `docs/agent-guide.md`
 
-Use [AGENTS.md](AGENTS.md) for required coding-agent behavior. All exact technical claims must be traced to sources in the relevant page or [source catalog](docs/reference/official-sources.md).
+Canonical topics:
+- Foundations: `docs/foundations.md`
+- Component mappings: `docs/components.md`
+- Flutter implementation: `docs/flutter.md`
+- Android and iOS: `docs/platforms.md`
+- Evidence and sources: `docs/evidence.md`
+- Project structure: `ai-rules-project-structure.md`
+
+Critical constraints:
+- `useMaterial3: true` is not proof of M3 Expressive conformance.
+- Verify API behavior against the target app's pinned Flutter SDK and dependencies.
+- Do not invent `m3d.design`, `context.m3e`, imports, tokens, or components.
+- Adapt to existing architecture; do not require BLoC, GetIt, GoRouter, or any package by default.
+- Label application-specific decisions and unknowns. Report tests that were not run.
+
+Historical component inventory and source evidence are in `docs/m3e-master-component-inventory.csv`, `docs/m3e-master-component-inventory.json`, and `docs/m3e-source-evidence-ledger.csv`. They are not current implementation claims.

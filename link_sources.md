@@ -1,6 +1,6 @@
 # Material Design and M3 Expressive source links
 
-This file preserves the original research URLs and organizes them by topic. Use it as a source-discovery index, not as proof that every URL was reachable or every page verified. The companion [source catalog](docs/reference/official-sources.md) records titles, claim scope, review dates, and access limitations for sources inspected during research. Unverified links must be checked before being used as authority.
+This file preserves the original research URLs and organizes them by topic. Use it as a source-discovery index, not as proof that every URL was reachable or every page verified. The companion [evidence guide](docs/evidence.md) describes the source hierarchy, limitations, and historical review dates. Unverified links must be checked before being used as authority.
 
 ## M3 Expressive and implementation repositories
 

@@ -4,7 +4,3 @@ __pycache__/
 .pytest_cache/
 site/
 .mkdocs_cache/
-examples/flutter/reference_app/.dart_tool/
-examples/flutter/reference_app/build/
-examples/flutter/reference_app/.flutter-plugins
-examples/flutter/reference_app/.flutter-plugins-dependencies

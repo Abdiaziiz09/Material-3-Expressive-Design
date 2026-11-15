@@ -29,61 +29,10 @@ markdown_extensions:
   - toc:
       permalink: true
 nav:
-  - Home: index.md
-  - Getting started:
-      - Scope and terminology: getting-started/scope.md
-  - Foundations:
-      - Overview: foundations/index.md
-      - Color: foundations/color.md
-      - Typography: foundations/typography.md
-      - Shape: foundations/shape.md
-      - Design token registry: foundations/design-token-registry.md
-      - Elevation and surfaces: foundations/elevation-and-surfaces.md
-      - Spacing and layout: foundations/spacing-and-layout.md
-      - Icons: foundations/icons.md
-      - Motion: foundations/motion.md
-      - Accessibility: foundations/accessibility.md
-      - Responsive design: foundations/responsive-design.md
-  - Components:
-      - Overview and coverage: components/index.md
-      - Component decision matrix: components/component-decision-matrix.md
-      - Actions and navigation: components/actions-and-navigation.md
-      - Content and selection: components/content-and-selection.md
-      - Input and feedback: components/input-and-feedback.md
-      - M3E component deep dives: components/expressive-component-deep-dives.md
-      - Component verification ledger: reference/component-verification-ledger.md
-      - Phase 0/1 audit: reference/m3e-phase0-1-audit.md
-  - Theming: theming/index.md
-  - Flutter:
-      - Overview: flutter/index.md
-      - Setup: flutter/setup.md
-      - Theme configuration: flutter/theme-configuration.md
-      - Custom components: flutter/custom-components.md
-      - Animation: flutter/animations.md
-      - Testing: flutter/testing.md
-  - Platforms:
-      - Overview: platforms/index.md
-      - Android mobile: platforms/android.md
-      - Android foldables: platforms/foldables.md
-      - iOS mobile: platforms/ios.md
-  - Design recipes:
-      - Overview: design-recipes/index.md
-      - Expressive screen recipes: design-recipes/expressive-screen-recipes.md
-  - AI agent guide:
-      - Overview: ai-agent-guide/index.md
-      - M3E quick-start: ai-agent-guide/m3e-quick-start.md
-      - Component snippets: ai-agent-guide/component-snippets.md
-      - Workflow: ai-agent-guide/implementation-workflow.md
-      - Decision rules: ai-agent-guide/design-decision-rules.md
-      - Platform selection: ai-agent-guide/platform-selection.md
-      - Validation checklist: ai-agent-guide/validation-checklist.md
-      - Anti-patterns: ai-agent-guide/anti-patterns.md
-  - Reference:
-      - Improvement plan: IMPROVEMENT_PLAN.md
-      - Official source catalog: reference/official-sources.md
-      - Flutter API reference: reference/flutter-api-reference.md
-      - Support matrix: reference/support-matrix.md
-      - Component coverage: reference/component-coverage.md
-      - Official visual references: reference/visual-reference-gallery.md
-      - Glossary: reference/glossary.md
-      - Publishing: reference/publishing.md
+  - Overview: overview.md
+  - AI agent guide: agent-guide.md
+  - Foundations: foundations.md
+  - Components: components.md
+  - Flutter: flutter.md
+  - Android and iOS: platforms.md
+  - Evidence and sources: evidence.md
