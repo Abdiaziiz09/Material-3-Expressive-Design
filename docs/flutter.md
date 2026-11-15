@@ -49,7 +49,11 @@ Prefer the target app's existing design tokens. If no token system exists, use a
 
 ## Choosing an animation API
 
-Select an animation API after defining the interaction; do not start by applying the same effect to every widget.
+Custom motion is opt-in. First establish that the user task or verified design evidence calls for motion; a request to build an M3E-style screen alone is not a request to animate it. If there is no clear need, do not add a custom animation. Existing Material control feedback may be sufficient.
+
+For each custom animation, make and verify a separate decision: name the widget and trigger/state change, the property being animated, the user benefit, why built-in feedback is insufficient, and the Flutter API that fits. Do not turn a choice for one widget (such as a draggable object or an important value) into a rule for every button, number, or route. Do not describe an app-specific choice as an M3E requirement.
+
+Select an animation API only after defining and justifying the interaction; do not start by applying the same effect to every widget.
 
 | Need | Flutter starting point | Fit and limits |
 |---|---|---|

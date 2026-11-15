@@ -21,6 +21,7 @@ Material 3 Expressive uses design to make hierarchy, information, and actions cl
 - Select shapes based on component intent and direct design evidence.
 - The [token sample](m3e_tokens.dart) contains only optional app-local rounded-corner examples. This repository does not implement expressive shape geometry, clipping paths, or shape morphing.
 - A shape name or screenshot does not specify a Flutter path. Verify geometry and interaction behavior before implementing custom clipping.
+- Do not add an unusual decorative shape or shape morph solely to make a screen look “expressive”; require a task-specific reason or verified design evidence.
 - Preserve readable content, visible focus, and usable rectangular hit regions.
 
 ## Surfaces and elevation
@@ -52,16 +53,16 @@ LayoutBuilder(
 
 ## Motion
 
-Motion is selected for the widget, action, and state change being implemented. Do not treat spring, ripple, shape morphing, scale, or number-ticker animation as a required bundle for every app or component. Add motion only when it improves feedback, continuity, hierarchy, or comprehension.
+Custom motion is opt-in, not a default implied by “M3 Expressive.” Do not add an animation unless the user requested it or a specific interaction and verified design evidence justify it. Normal built-in Material feedback is sufficient when it already communicates the interaction. Spring, ripple, shape morphing, scale, and number-ticker animation are options—not a required bundle or checklist.
 
 ### Select motion by intent
 
-1. Identify the widget's role, the user action or state change, and what the user needs to understand.
+1. Identify the widget's role, the user action or state change, and what the user needs to understand. If no motion need is apparent, do not add custom animation.
 2. Classify the property being animated:
    - **Effects:** color, opacity, or other changes that do not alter the component's shape or bounds.
    - **Spatial:** position, size, bounds, or shape changes.
 3. Consider prominence and repetition. A prominent action or meaningful shared transition may justify more expressive motion; a frequently repeated utility control usually benefits from restrained, quick feedback.
-4. Choose the simplest Flutter animation that communicates the change. Use existing Material control feedback when it already meets the need.
+4. Choose the simplest Flutter animation that communicates the change. Use existing Material control feedback when it already meets the need; do not layer duplicate ripple, scale, or spring effects onto it.
 5. Verify the actual design source, target SDK behavior, interruption handling, and reduced-motion behavior. Treat unsourced timings and curves as application choices.
 
 AndroidX Compose Material 3 Expressive documents this intent-sensitive approach in its [MotionScheme API](https://developer.android.com/reference/kotlin/androidx/compose/material3/MotionScheme): it distinguishes spatial from effects specs and describes expressive motion for prominent UI/hero interactions versus standard motion for utilitarian and recurring interactions. This is **Compose-specific implementation guidance**, not a Flutter API or a universal Flutter prescription; use it as a decision model, not as Kotlin code to copy into Flutter.
@@ -75,7 +76,7 @@ AndroidX Compose Material 3 Expressive documents this intent-sensitive approach 
 | Item enters or leaves a list | Insert/remove animation when it preserves orientation | Every rebuild should animate the entire list |
 | Important value changes | Number/count transition only when it improves understanding | Every number should roll or tick |
 
-These are examples for making a decision, not a component-to-animation mandate. An application's motion choices should remain coherent while allowing different widgets and tasks to use different patterns.
+These are examples for making a decision, not a component-to-animation mandate. Decide separately for each widget and state change; do not copy the same spring, morph, scale, ripple, or ticker to every control. For each custom animation, be able to state its widget, trigger, animated property, user benefit, and verified API. If that justification is missing, omit it. An application's motion choices should remain coherent while allowing different widgets and tasks to use different patterns.
 
 The optional token example no longer defines generic durations or curves: this repository has no source-backed universal motion token set. Use the target app's verified motion system or choose and document app-specific values for the actual transition.
 

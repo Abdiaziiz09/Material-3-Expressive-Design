@@ -18,6 +18,8 @@ Agent products differ in which instruction files they discover. Do not claim tha
 - Never invent `m3d.design`, `context.m3e`, token accessors, widgets, imports, or packages. Use them only when their implementation exists in the target app or a declared dependency.
 - Prefer semantic theme roles and existing app tokens. Do not pass project-defined values off as official Material tokens.
 - Avoid unexplained layout, spacing, radius, and duration literals. Reuse named app tokens where available; document and centralize any genuinely shared new project value.
+- Do not invent decorative treatments, custom shapes, or animations just because a task mentions M3 Expressive. Implement only requested behavior or behavior supported by verified, relevant design evidence; otherwise keep the simplest appropriate UI and flag meaningful assumptions.
+- Do not add custom motion by default. For every custom animation, identify its specific widget, trigger/state change, user benefit, and verified Flutter API; if any are unclear or unjustified, omit it. Built-in Material interaction feedback may remain.
 - Support text scaling, localization/RTL, semantics, focus, platform navigation, safe areas, and reduced motion where applicable.
 - Surface failures using the target app's established error patterns. Avoid silent catches, success-shaped fallbacks, and unnecessary casts.
 - Write idiomatic Dart/Flutter code and follow the target project's formatter and lints. Write code comments in clear, professional English. Add concise comments that explain the purpose of each meaningful class, widget, function, or non-obvious logic block; use `///` for public API documentation. Do not comment every line or repeat self-explanatory code. Keep comments accurate and maintained.

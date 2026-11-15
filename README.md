@@ -22,7 +22,7 @@ Use the root [AGENTS.md](AGENTS.md) as a short routing guide. Agent tools differ
 
 Before implementing a screen, inspect the target app's Flutter/Dart version, dependencies, existing conventions, supported platforms/form factors, localization, and accessibility requirements. Read the relevant pages above, verify APIs in the app's pinned SDK, and label unsupported details instead of guessing.
 
-Choose motion for the particular widget, action, and state change. Spring, ripple, shape morphing, scale, and number-ticker effects are possible patterns, not a mandatory checklist. See [motion foundations](docs/foundations.md#motion) and [Flutter animation choices](docs/flutter.md#choosing-an-animation-api).
+Do not invent expressive treatments just because a task mentions M3E. Custom motion is not a default: add it only when requested or justified for a specific widget and state change. See [motion foundations](docs/foundations.md#motion) and [Flutter animation choices](docs/flutter.md#choosing-an-animation-api).
 
 This repository contains no Flutter app to analyze or run. The optional [token example](docs/m3e_tokens.dart) contains app-local spacing and shape values, not an installed API. See [Contributing](CONTRIBUTING.md) for documentation checks.
 
