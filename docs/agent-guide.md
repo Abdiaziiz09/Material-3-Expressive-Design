@@ -47,6 +47,10 @@ Treat this as a scalable example, not a required scaffold. Avoid creating empty 
 ## Implementation rules
 
 - Reuse existing code and established naming, formatting, localization, and theme patterns.
+- Write idiomatic Dart and Flutter code for the target SDK. Follow the repository's `analysis_options.yaml`, configured formatter, lints, and naming patterns; where none are specified, use the [Dart style guide](https://dart.dev/effective-dart/style) and run `dart format`.
+- Write code comments in clear, professional English, even when the surrounding conversation or user-facing app copy uses another language.
+- Add concise comments that explain what each meaningful class, widget, or function is responsible for, and clarify non-obvious logic, constraints, or trade-offs. Use `///` for useful public API documentation.
+- Keep comments near the code they describe, accurate, and updated when behavior changes. Do not comment every line or merely restate obvious code; names and types should make straightforward details clear.
 - Use semantic `ColorScheme`, `TextTheme`, and target-app design tokens where available.
 - Do not invent `m3d.design`, `context.m3e`, component classes, token accessors, or imports. They are available only if their implementations exist in the target app or a declared dependency.
 - Do not present a baseline Material widget as M3E merely because `useMaterial3` is enabled. Also do not ban built-in widgets without component-specific evidence.

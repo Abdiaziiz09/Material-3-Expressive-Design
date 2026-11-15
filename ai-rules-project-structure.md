@@ -38,6 +38,10 @@ This is an illustrative feature-oriented layout, not a Flutter standard. A small
 ## Code organization
 
 - Keep widgets focused on rendering and user interaction; isolate domain rules and external I/O when complexity warrants it.
+- Write idiomatic Dart and Flutter code for the target SDK. Follow the project's `analysis_options.yaml`, formatter, lints, and established naming. If the project has no conventions, follow the [Dart style guide](https://dart.dev/effective-dart/style) and format with `dart format`.
+- Write code comments in clear, professional English, regardless of the conversation language or user-facing app locale.
+- Add concise comments explaining the responsibility of each meaningful class, widget, and function. Use `///` for public API documentation, and explain non-obvious logic, constraints, and trade-offs near the relevant code.
+- Keep comments accurate and update them when behavior changes. Do not comment every line or repeat what clear names and straightforward code already say.
 - Put state in the target app's existing state-management pattern. Do not mix patterns in the same feature without a clear boundary.
 - Use typed models, explicit failure/loading/empty states, and the project's existing error-reporting approach.
 - Keep route definitions centralized only if the app benefits from it. Avoid adding a router package for a trivial navigation flow.

@@ -8,6 +8,12 @@ Use Flutter's current [installation](https://docs.flutter.dev/get-started/instal
 
 Flutter's Material libraries and standalone packages evolve across SDK versions. Read the current [Material/Cupertino package migration guide](https://docs.flutter.dev/release/breaking-changes/material-ui-and-cupertino-ui) before selecting imports. Do not mix types from incompatible Material libraries.
 
+## Dart and Flutter code style
+
+Write code in idiomatic Dart using Flutter's established APIs and widget-composition patterns. Follow the target project's Dart SDK constraints, `analysis_options.yaml`, formatter, lints, and existing conventions. If no project-specific rules exist, use the [Dart style guide](https://dart.dev/effective-dart/style) and [documentation guidance](https://dart.dev/effective-dart/documentation), and format with `dart format`.
+
+Write code comments in clear, professional English. Add a concise explanation for the responsibility of each meaningful class, widget, and function so readers can understand each part without inferring its role from implementation details alone. Use Dart documentation comments (`///`) for public APIs. Add focused comments for non-obvious logic, constraints, and trade-offs; do not narrate every line or repeat what clear names and code already communicate. Keep comments near the relevant code and update them when behavior changes.
+
 ## Theme configuration
 
 ```dart
@@ -73,4 +79,4 @@ Run integration tests only when such tests and suitable devices are configured. 
 
 ## Copying snippets
 
-Inspect the entire snippet and surrounding imports, replace example names such as `brandSeedColor` with app-owned values, verify API signatures for the pinned SDK, and run analyzer/tests after adapting. Label custom choices and state unsupported behavior explicitly.
+Inspect the entire snippet and surrounding imports, replace example names such as `brandSeedColor` with app-owned values, verify API signatures for the pinned SDK, format and analyze it using the target project's tools, and run relevant tests after adapting. Add English comments to explain the responsibility of meaningful code units and any non-obvious choices. Label custom choices and state unsupported behavior explicitly.

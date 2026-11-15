@@ -20,6 +20,7 @@ Agent products differ in which instruction files they discover. Do not claim tha
 - Avoid unexplained layout, spacing, radius, and duration literals. Reuse named app tokens where available; document and centralize any genuinely shared new project value.
 - Support text scaling, localization/RTL, semantics, focus, platform navigation, safe areas, and reduced motion where applicable.
 - Surface failures using the target app's established error patterns. Avoid silent catches, success-shaped fallbacks, and unnecessary casts.
+- Write idiomatic Dart/Flutter code and follow the target project's formatter and lints. Write code comments in clear, professional English. Add concise comments that explain the purpose of each meaningful class, widget, function, or non-obvious logic block; use `///` for public API documentation. Do not comment every line or repeat self-explanatory code. Keep comments accurate and maintained.
 - Make focused changes, preserve unrelated work, and update directly related documentation/tests.
 
 ## Verification and completion
