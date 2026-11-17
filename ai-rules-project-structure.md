@@ -1,16 +1,4 @@
-# Flutter project structure and coding guidance
-
-This is a portable reference for Flutter projects. Adapt it to the target repository; it is not a mandatory architecture or a vendor-specific agent configuration. If an AI tool does not discover this file, configure that tool's own instruction mechanism to reference it.
-
-## Principles
-
-- Inspect the existing project before proposing structural changes.
-- Preserve its established naming, architecture, dependencies, and test conventions unless there is a concrete, task-related reason to change them.
-- Keep code near the feature that owns it. Introduce shared layers only when more than one feature genuinely needs them.
-- Prefer straightforward, typed, testable code over a large generic architecture.
-- Add dependencies only for demonstrated needs. BLoC, Riverpod, Provider, GetIt, GoRouter, and `Either`-style result types are alternatives, not requirements.
-- Do not add empty directories or abstractions for hypothetical future features.
-
+# Flutter pr
 ## Example for a growing app
 
 ```text
@@ -31,13 +19,29 @@ lib/
 test/
   features/
     library/
-```
+```oject structure and coding guidance
+
+This is a portable reference for Flutter projects. Adapt it to the target repository; it is not a mandatory architecture or a vendor-specific agent configuration. If an AI tool does not discover this file, configure that tool's own instruction mechanism to reference it.
+
+## Principles
+
+- Inspect the existing project before proposing structural changes.
+- Preserve its established naming, architecture, dependencies, and test conventions unless there is a concrete, task-related reason to change them.
+- In target-app implementation code, do not use `M3E` or design-label prefixes such as `M3` in class, function, variable, or file names, or in code comments. Choose names that state the domain role, responsibility, or behavior; keep design-system labels in documentation instead.
+- Keep code near the feature that owns it. Introduce shared layers only when more than one feature genuinely needs them.
+- Prefer straightforward, typed, testable code over a large generic architecture.
+- Keep functions and widgets cohesive and focused. Extract reusable behavior when it has real repeated use or a meaningful standalone responsibility; avoid premature abstractions and splitting code into excessive files or layers.
+- Separate presentation, state/business logic, and external I/O where this makes the feature easier to understand, test, or change without affecting unrelated parts.
+- Add dependencies only for demonstrated needs. BLoC, Riverpod, Provider, GetIt, GoRouter, and `Either`-style result types are alternatives, not requirements.
+- Do not add empty directories or abstractions for hypothetical future features.
+
 
 This is an illustrative feature-oriented layout, not a Flutter standard. A small app may need only `lib/`, a few focused files, and `test/`. Do not create `data/domain/application` layers when a feature is simple enough to implement clearly without them. Match tests to behavior and mirror feature paths when practical.
 
 ## Code organization
 
 - Keep widgets focused on rendering and user interaction; isolate domain rules and external I/O when complexity warrants it.
+- Prefer small, clear functions and focused files over long, mixed-responsibility implementations. Reuse an abstraction when it reduces real duplication or clarifies a stable concept, not as a goal in itself.
 - Write idiomatic Dart and Flutter code for the target SDK. Follow the project's `analysis_options.yaml`, formatter, lints, and established naming. If the project has no conventions, follow the [Dart style guide](https://dart.dev/effective-dart/style) and format with `dart format`.
 - Write code comments in clear, professional English, regardless of the conversation language or user-facing app locale.
 - Add concise comments explaining the responsibility of each meaningful class, widget, and function. Use `///` for public API documentation, and explain non-obvious logic, constraints, and trade-offs near the relevant code.

@@ -44,6 +44,14 @@ Treat this as a scalable example, not a required scaffold. Avoid creating empty 
 - Keep UI, state transitions, and external I/O separated enough to test, without introducing layers that add no value.
 - Use typed models and explicit loading, empty, success, and error states where relevant. Surface errors through the app's established logging and user-notification patterns; do not silently swallow them.
 
+## Naming, code quality, and maintainability
+
+- In target-app implementation code, do not use `M3E` or a design-label prefix such as `M3` in class, function, variable, or file names, or in code comments. Names should describe the item's responsibility, behavior, or domain role. Discuss M3E in documentation when useful, but do not brand implementation identifiers with the design-system label.
+- Follow the target app's established architecture and organize code around its features and responsibilities. Keep presentation, state/business rules, and external I/O separated where that improves understanding and testability; do not impose layers on a small feature that does not need them.
+- Keep widgets and functions focused on one clear responsibility. Extract a helper or reusable component when it removes meaningful duplication or provides a stable concept—not merely to make every method shorter or to anticipate hypothetical reuse.
+- Prefer cohesive files and clear boundaries over long files mixing unrelated UI, state, and I/O. Add a folder, abstraction, or shared module only when its purpose is concrete; keep feature-specific code near its owner and avoid unrelated refactors.
+- Make changes easy to extend without coupling unrelated features: reuse existing interfaces and tokens, expose only what callers need, and keep behavior local unless it is genuinely shared.
+
 ## Implementation rules
 
 - Reuse existing code and established naming, formatting, localization, and theme patterns.

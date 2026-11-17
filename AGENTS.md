@@ -16,6 +16,9 @@ Agent products differ in which instruction files they discover. Do not claim tha
 - `ThemeData.useMaterial3: true` does not prove complete M3 Expressive conformance.
 - Reuse Flutter Material widgets when their verified behavior meets the task. Do not ban or prescribe a widget solely by family name.
 - Never invent `m3d.design`, `context.m3e`, token accessors, widgets, imports, or packages. Use them only when their implementation exists in the target app or a declared dependency.
+- In target-app code, do not put `M3E` (or a design-label prefix such as `M3`) in class, function, variable, or file names, or in code comments. Name each item for its responsibility, behavior, or domain role; the design-system name belongs in documentation when relevant, not in implementation identifiers.
+- Follow the target app's established Flutter architecture. Keep UI, state/business logic, and external I/O in clear, testable boundaries; organize by feature when that fits the app, and introduce folders, layers, or shared code only when they solve a real need.
+- Keep implementation focused and maintainable: use small, cohesive functions and widgets, extract repeated or independently meaningful behavior, and avoid long mixed-responsibility files, premature abstractions, unnecessary duplication, and unrelated changes.
 - Prefer semantic theme roles and existing app tokens. Do not pass project-defined values off as official Material tokens.
 - Avoid unexplained layout, spacing, radius, and duration literals. Reuse named app tokens where available; document and centralize any genuinely shared new project value.
 - Do not invent decorative treatments, custom shapes, or animations just because a task mentions M3 Expressive. Implement only requested behavior or behavior supported by verified, relevant design evidence; otherwise keep the simplest appropriate UI and flag meaningful assumptions.
