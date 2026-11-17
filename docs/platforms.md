@@ -29,9 +29,11 @@ Adapt to the app's actual available width and posture; do not merely scale a pho
 
 ## Device validation
 
-Record device/simulator, OS version, form factor, orientation, locale, text settings, input mode, and accessibility tools used. Test the target configurations the app claims to support. Widget tests alone do not validate native permissions, OS behavior, fold posture, lifecycle, or actual screen-reader output.
+Responsive behavior is required across every configuration the app claims to support. For each changed screen, identify the narrowest and widest supported available widths and test just below/at/above any app-specific layout breakpoint. Include orientation or window resizing, long/localized text and RTL, large text, keyboard/IME, and supported touch/keyboard/pointer input when relevant. Check that content remains reachable and there is no unintended overflow, clipping, or inaccessible action.
 
-If physical devices or simulators are unavailable, clearly report that gap instead of claiming platform validation.
+Record device/simulator, OS version, form factor, orientation, available size, locale, text settings, input mode, and accessibility tools used. Widget tests with varied constraints are useful but do not validate native permissions, OS behavior, fold posture, lifecycle, or actual screen-reader output.
+
+If physical devices or simulators are unavailable, run the applicable layout/widget checks and clearly report that gap instead of claiming platform validation. Do not promise compatibility with every device; state the supported configurations and the ones actually tested.
 
 ## Platform sources
 

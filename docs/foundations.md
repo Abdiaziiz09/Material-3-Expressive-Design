@@ -101,7 +101,15 @@ Accessibility is part of implementation, not a final visual polish step.
 
 ## Responsive and adaptive decisions
 
-Responsive design fits content to available space; adaptive design also chooses a usable composition and interaction. There is no single breakpoint that fits every app. Document app-specific thresholds and test supported phones, tablets, foldables, orientations, and resized windows.
+Responsive and adaptive behavior is required for every UI implementation, not an optional polish phase. Responsive design fits content to available space; adaptive design also chooses a usable composition and interaction. Build for the target app's defined supported range, not only one reference screenshot or device.
+
+- Use available constraints as the source of truth. Prefer flexible layouts, wrapping, and scrolling to fixed screen dimensions or device-model checks.
+- Keep essential content and actions usable at the narrowest supported width; avoid excessive stretching at the widest. Select app-specific breakpoints based on when the content layout should change—there is no universal breakpoint.
+- Avoid rigid text bounds and fixed heights that clip at large text sizes, translations, or when the keyboard appears. Use safe areas and preserve access to obscured content.
+- Check orientation/window resizing and relevant input modes, localization/RTL, and accessibility settings for the app's supported platforms.
+- Validate minimum, maximum, and breakpoint-adjacent constraints, including empty/loading/error and expanded-content states where applicable. Fix overflow and clipping; do not treat a screenshot at one size as responsive validation.
+
+No implementation can be guaranteed to work on every unspecified device and configuration. Define the supported range, test representative boundaries, and state what could not be tested. See [platform validation](platforms.md#device-validation) and [Flutter testing](flutter.md#testing).
 
 ## Primary sources
 

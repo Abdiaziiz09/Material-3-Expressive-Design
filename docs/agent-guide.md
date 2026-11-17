@@ -8,7 +8,8 @@ This guide is the shared, agent-neutral workflow for Flutter UI tasks. Product-s
 2. Inspect the target app: Flutter/Dart version, dependencies, architecture, existing widgets, test layout, Android/iOS deployment targets, supported form factors, localization, and accessibility requirements.
 3. Write down the user task, official design requirements, verified Flutter behavior, app-specific decisions, and unknowns. Link evidence for design claims.
 4. Check the target app's actual constructors, imports, and package versions. This docs repository has no executable widget library.
-5. Keep the change scoped to the requested feature. Follow existing project structure unless there is a concrete reason to improve it.
+5. Treat responsive/adaptive behavior as required for every UI change. Identify the app's supported minimum and maximum available sizes and relevant conditions (orientation, resizing, text scale, localization/RTL, keyboard, and input mode). If the target app has not defined them, determine a reasonable scope from its platform requirements and state that assumption.
+6. Keep the change scoped to the requested feature. Follow existing project structure unless there is a concrete reason to improve it.
 
 ## Professional Flutter structure
 
@@ -52,6 +53,15 @@ Treat this as a scalable example, not a required scaffold. Avoid creating empty 
 - Prefer cohesive files and clear boundaries over long files mixing unrelated UI, state, and I/O. Add a folder, abstraction, or shared module only when its purpose is concrete; keep feature-specific code near its owner and avoid unrelated refactors.
 - Make changes easy to extend without coupling unrelated features: reuse existing interfaces and tokens, expose only what callers need, and keep behavior local unless it is genuinely shared.
 
+## Responsive UI is required
+
+- Every screen and widget change must adapt to the available constraints across the target app's **defined supported configurations**. Do not implement only for the screenshot, one emulator, or a presumed phone size.
+- Prefer constraint-driven layout (`LayoutBuilder`, flexible constraints, `Expanded`/`Flexible`, wrapping, scrolling, and adaptive composition where appropriate) over device-model checks, fixed screen dimensions, or rigid widths/heights. Fixed dimensions are acceptable only when justified by the component and they do not clip, overflow, or block the task at supported sizes.
+- Keep content usable at the narrowest supported width and avoid unnecessarily stretched layouts at the widest; choose app-specific breakpoints from content needs, not guessed universal values. Preserve scrolling for content that cannot fit.
+- Consider orientation/window resizing, safe areas and display cutouts, keyboard/IME, large text, long translations, RTL, and the app's supported touch, keyboard, or pointer input. Adapt interaction and composition where the platform or available space requires it.
+- Before completion, validate representative minimum, breakpoint-adjacent, and maximum widths plus relevant states. Use widget tests with varied constraints/text scaling when available and device/emulator checks for platform-specific behavior. Fix overflow, clipping, inaccessible controls, and lost content rather than merely documenting them.
+- No guide can guarantee correct rendering on every device or configuration. Define the supported range, test it, and disclose unavailable devices or untested conditions; never claim “100% on any device” without evidence.
+
 ## Implementation rules
 
 - Reuse existing code and established naming, formatting, localization, and theme patterns.
@@ -60,6 +70,7 @@ Treat this as a scalable example, not a required scaffold. Avoid creating empty 
 - Add concise comments that explain what each meaningful class, widget, or function is responsible for, and clarify non-obvious logic, constraints, or trade-offs. Use `///` for useful public API documentation.
 - Keep comments near the code they describe, accurate, and updated when behavior changes. Do not comment every line or merely restate obvious code; names and types should make straightforward details clear.
 - Use semantic `ColorScheme`, `TextTheme`, and target-app design tokens where available.
+- Make responsive behavior part of the screen's layout, not a later polish step; verify supported compact and expanded constraints and relevant text/localization conditions before considering a UI task complete.
 - Do not invent `m3d.design`, `context.m3e`, component classes, token accessors, or imports. They are available only if their implementations exist in the target app or a declared dependency.
 - Do not present a baseline Material widget as M3E merely because `useMaterial3` is enabled. Also do not ban built-in widgets without component-specific evidence.
 - Avoid unexplained layout, radius, or duration literals. Prefer the app's named tokens; label any new application-specific value and centralize it when it is genuinely shared.

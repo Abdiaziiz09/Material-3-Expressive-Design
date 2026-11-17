@@ -95,6 +95,8 @@ Use Flutter's [testing guidance](https://docs.flutter.dev/testing). Choose tests
 - Integration tests for navigation and OS/plugin behavior on target devices.
 - Visual comparisons for representative sizes and states, reviewed alongside manual inspection.
 
+For every UI change, include responsive validation in the definition of done. Test the relevant widget or screen at its narrowest and widest supported constraints, around each app-specific breakpoint, and with large text or long content. Verify that controls stay reachable, content can scroll when needed, and no unintended overflow or clipping occurs. Add focused widget tests with varied constraints when the layout behavior is important; use target devices for platform-specific resizing, safe areas, keyboard, and fold behavior.
+
 Run relevant commands in the **target app**:
 
 ```bash
